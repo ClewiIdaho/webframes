@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🚀 COSMIC VOYAGER</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #020208;
+    overflow: hidden;
+  }
+
+  /* === DEEP SPACE STAR FIELD === */
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  body::before {
+    background:
+      radial-gradient(1px 1px at 5% 10%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1px 1px at 15% 45%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1px 1px at 25% 80%, rgba(200,220,255,0.5), transparent),
+      radial-gradient(1px 1px at 35% 20%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 45% 60%, rgba(255,240,200,0.4), transparent),
+      radial-gradient(1px 1px at 55% 35%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1px 1px at 65% 75%, rgba(200,200,255,0.3), transparent),
+      radial-gradient(1px 1px at 75% 15%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1px 1px at 85% 55%, rgba(255,220,180,0.4), transparent),
+      radial-gradient(1px 1px at 95% 90%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 10% 70%, rgba(180,200,255,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 30% 30%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 50% 90%, rgba(255,240,220,0.3), transparent),
+      radial-gradient(1.5px 1.5px at 70% 50%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 90% 25%, rgba(200,220,255,0.4), transparent);
+    animation: stars-twinkle 4s ease-in-out infinite alternate;
+  }
+
+  body::after {
+    background:
+      radial-gradient(1px 1px at 8% 55%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1px 1px at 18% 85%, rgba(255,200,150,0.3), transparent),
+      radial-gradient(1px 1px at 28% 15%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1px 1px at 38% 65%, rgba(200,200,255,0.5), transparent),
+      radial-gradient(1px 1px at 48% 25%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 58% 80%, rgba(255,240,200,0.4), transparent),
+      radial-gradient(1px 1px at 68% 40%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1px 1px at 78% 70%, rgba(200,220,255,0.3), transparent),
+      radial-gradient(1px 1px at 88% 10%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1px 1px at 98% 50%, rgba(255,220,180,0.4), transparent);
+    animation: stars-twinkle 5s ease-in-out infinite alternate-reverse;
+  }
+
+  @keyframes stars-twinkle {
+    0%   { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+
+  .stage {
+    position: relative;
+    width: 400px;
+    height: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* === PHOTO SLOT === */
+  .photo-slot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #08081a;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .photo-slot span {
+    color: rgba(100,180,255,0.15);
+    font: bold 11px/1.3 sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* === L1: INNER SHIELD RING (space station hull) === */
+  .shield-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 198px;
+    height: 198px;
+    border-radius: 50%;
+    z-index: 9;
+    pointer-events: none;
+    box-shadow:
+      inset 0 0 0 2px rgba(100,180,255,0.3),
+      inset 0 0 6px rgba(80,150,255,0.2),
+      0 0 0 2px rgba(80,150,255,0.2),
+      0 0 8px rgba(80,150,255,0.15);
+    animation: shield-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes shield-pulse {
+    0%, 100% {
+      box-shadow:
+        inset 0 0 0 2px rgba(100,180,255,0.3),
+        inset 0 0 6px rgba(80,150,255,0.2),
+        0 0 0 2px rgba(80,150,255,0.2),
+        0 0 8px rgba(80,150,255,0.15);
+    }
+    50% {
+      box-shadow:
+        inset 0 0 0 2px rgba(130,200,255,0.5),
+        inset 0 0 10px rgba(100,180,255,0.35),
+        0 0 0 3px rgba(100,180,255,0.35),
+        0 0 15px rgba(100,180,255,0.25);
+    }
+  }
+
+  /* === L2: GALAXY NEBULA HAZE === */
+  .nebula {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    background: conic-gradient(
+      from 0deg,
+      rgba(30,0,80,0) 0deg,
+      rgba(60,20,120,0.4) 25deg,
+      rgba(20,0,60,0) 50deg,
+      rgba(100,40,180,0.3) 80deg,
+      rgba(10,0,40,0) 110deg,
+      rgba(40,80,160,0.4) 140deg,
+      rgba(10,20,60,0) 170deg,
+      rgba(80,30,140,0.35) 200deg,
+      rgba(20,0,80,0) 230deg,
+      rgba(50,100,180,0.3) 260deg,
+      rgba(10,10,50,0) 290deg,
+      rgba(70,20,130,0.4) 320deg,
+      rgba(30,0,80,0) 360deg
+    );
+    filter: blur(25px);
+    animation: nebula-swirl 15s linear infinite, nebula-breathe 6s ease-in-out infinite;
+  }
+
+  @keyframes nebula-swirl { to { transform: translate(-50%,-50%) rotate(360deg); } }
+  @keyframes nebula-breathe {
+    0%, 100% { opacity: 0.5; }
+    50%      { opacity: 0.85; }
+  }
+
+  /* Second nebula layer */
+  .nebula-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    background: conic-gradient(
+      from 90deg,
+      rgba(0,40,100,0) 0deg,
+      rgba(20,80,160,0.35) 40deg,
+      rgba(0,20,80,0) 80deg,
+      rgba(60,0,120,0.3) 130deg,
+      rgba(0,30,90,0) 180deg,
+      rgba(30,60,140,0.4) 230deg,
+      rgba(0,10,60,0) 280deg,
+      rgba(50,20,110,0.3) 330deg,
+      rgba(0,40,100,0) 360deg
+    );
+    filter: blur(20px);
+    animation: nebula-swirl-2 20s linear infinite reverse;
+    opacity: 0.6;
+  }
+
+  @keyframes nebula-swirl-2 { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L3: PLANETARY RING SYSTEM === */
+  .planet-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(65deg);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    z-index: 6;
+    pointer-events: none;
+    border: 2px solid rgba(180,200,255,0.15);
+    box-shadow:
+      0 0 0 4px rgba(140,170,220,0.06),
+      0 0 0 8px rgba(120,150,200,0.04),
+      0 0 0 12px rgba(100,130,180,0.02);
+    animation: ring-rotate 10s linear infinite;
+  }
+
+  @keyframes ring-rotate { to { transform: translate(-50%,-50%) rotateX(65deg) rotate(360deg); } }
+
+  .planet-ring-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(65deg);
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    z-index: 5;
+    pointer-events: none;
+    border: 1px solid rgba(160,180,220,0.1);
+    box-shadow: 0 0 0 3px rgba(140,160,200,0.04);
+    animation: ring-rotate-2 14s linear infinite reverse;
+  }
+
+  @keyframes ring-rotate-2 { to { transform: translate(-50%,-50%) rotateX(65deg) rotate(360deg); } }
+
+  /* === L4: TECH CIRCLE RING (HUD style) === */
+  .hud-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 224px;
+    height: 224px;
+    z-index: 7;
+    pointer-events: none;
+    animation: hud-spin 8s linear infinite;
+  }
+  .hud-ring svg { width: 100%; height: 100%; overflow: visible; }
+
+  @keyframes hud-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .hud-seg {
+    fill: none;
+    stroke: rgba(100,180,255,0.4);
+    stroke-width: 2;
+    stroke-linecap: butt;
+    stroke-dasharray: 15 8 6 12;
+  }
+
+  .hud-seg-bright {
+    fill: none;
+    stroke: rgba(150,210,255,0.7);
+    stroke-width: 1.5;
+    stroke-linecap: butt;
+    stroke-dasharray: 4 30;
+    animation: hud-blink 1.5s steps(1) infinite;
+  }
+
+  @keyframes hud-blink {
+    0%, 60%  { stroke: rgba(150,210,255,0.7); }
+    30%      { stroke: rgba(255,255,255,0.9); }
+  }
+
+  /* === L5: OUTER HUD RING === */
+  .hud-ring-outer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    z-index: 6;
+    pointer-events: none;
+    animation: hud-spin-outer 12s linear infinite reverse;
+  }
+  .hud-ring-outer svg { width: 100%; height: 100%; overflow: visible; }
+
+  @keyframes hud-spin-outer { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .hud-outer-seg {
+    fill: none;
+    stroke: rgba(80,150,255,0.25);
+    stroke-width: 1.5;
+    stroke-dasharray: 20 10 5 15;
+  }
+
+  /* === L6: ORBITING SPACESHIPS === */
+  .ship-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 340px;
+    height: 340px;
+    z-index: 13;
+    pointer-events: none;
+  }
+
+  .ship-orbit-1 { animation: ship-orbit-spin 10s linear infinite; }
+  .ship-orbit-2 { animation: ship-orbit-spin 14s linear infinite reverse; }
+  .ship-orbit-3 { animation: ship-orbit-spin 8s linear infinite; }
+
+  @keyframes ship-orbit-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .ship-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+
+  /* Ship 1 positions */
+  .sc1 { margin: -15px 0 0 -15px; transform: rotate(0deg)   translateX(170px); }
+  .sc2 { margin: -15px 0 0 -15px; transform: rotate(180deg) translateX(170px); }
+
+  /* Ship 2 positions */
+  .sc3 { margin: -15px 0 0 -15px; transform: rotate(60deg)  translateX(155px); }
+  .sc4 { margin: -15px 0 0 -15px; transform: rotate(240deg) translateX(155px); }
+
+  /* Ship 3 positions */
+  .sc5 { margin: -15px 0 0 -15px; transform: rotate(30deg)  translateX(185px); }
+
+  /* SPACESHIP BUILT WITH CSS */
+  .spaceship {
+    width: 30px;
+    height: 30px;
+    position: relative;
+  }
+
+  /* Fighter ship */
+  .ship-fighter .ship-body {
+    position: absolute;
+    width: 12px;
+    height: 20px;
+    background: linear-gradient(180deg, #c0c8d8, #8090a8, #606878);
+    clip-path: polygon(50% 0%, 100% 70%, 80% 100%, 20% 100%, 0% 70%);
+    top: 2px;
+    left: 9px;
+  }
+  .ship-fighter .ship-wing-l {
+    position: absolute;
+    width: 10px;
+    height: 12px;
+    background: linear-gradient(90deg, #4060a0, #6080c0);
+    clip-path: polygon(100% 0%, 100% 100%, 0% 80%);
+    top: 8px;
+    left: 0px;
+  }
+  .ship-fighter .ship-wing-r {
+    position: absolute;
+    width: 10px;
+    height: 12px;
+    background: linear-gradient(-90deg, #4060a0, #6080c0);
+    clip-path: polygon(0% 0%, 0% 100%, 100% 80%);
+    top: 8px;
+    left: 20px;
+  }
+  .ship-fighter .ship-engine {
+    position: absolute;
+    width: 6px;
+    height: 8px;
+    bottom: -2px;
+    left: 12px;
+    background: linear-gradient(180deg, rgba(100,180,255,0.9), rgba(50,120,255,0.6), transparent);
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    animation: engine-flicker 0.15s steps(2) infinite;
+    filter: blur(1px);
+  }
+  .ship-fighter .ship-cockpit {
+    position: absolute;
+    width: 4px;
+    height: 5px;
+    background: rgba(150,220,255,0.6);
+    border-radius: 50% 50% 30% 30%;
+    top: 5px;
+    left: 13px;
+    box-shadow: 0 0 4px rgba(150,220,255,0.4);
+  }
+
+  @keyframes engine-flicker {
+    0%   { opacity: 0.7; height: 8px; }
+    50%  { opacity: 1; height: 11px; }
+  }
+
+  /* Cruiser ship (bigger) */
+  .ship-cruiser .ship-body {
+    position: absolute;
+    width: 16px;
+    height: 24px;
+    background: linear-gradient(180deg, #a0a8b8, #707888, #505868);
+    clip-path: polygon(50% 0%, 90% 40%, 100% 80%, 85% 100%, 15% 100%, 0% 80%, 10% 40%);
+    top: 0px;
+    left: 7px;
+  }
+  .ship-cruiser .ship-wing-l {
+    position: absolute;
+    width: 8px;
+    height: 14px;
+    background: linear-gradient(90deg, #3050a0, #5070b0);
+    clip-path: polygon(100% 20%, 100% 100%, 0% 70%);
+    top: 6px;
+    left: 0px;
+  }
+  .ship-cruiser .ship-wing-r {
+    position: absolute;
+    width: 8px;
+    height: 14px;
+    background: linear-gradient(-90deg, #3050a0, #5070b0);
+    clip-path: polygon(0% 20%, 0% 100%, 100% 70%);
+    top: 6px;
+    left: 22px;
+  }
+  .ship-cruiser .ship-engine {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    bottom: -3px;
+    left: 10px;
+    background: linear-gradient(180deg, rgba(100,180,255,0.8), rgba(60,100,255,0.5), transparent);
+    clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+    animation: engine-flicker 0.12s steps(2) infinite;
+    filter: blur(1.5px);
+  }
+  .ship-cruiser .ship-cockpit {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(100,200,255,0.5);
+    border-radius: 50%;
+    top: 5px;
+    left: 12px;
+    box-shadow: 0 0 5px rgba(100,200,255,0.4);
+  }
+
+  /* Scout ship (small, fast) */
+  .ship-scout .ship-body {
+    position: absolute;
+    width: 8px;
+    height: 16px;
+    background: linear-gradient(180deg, #d0d8e0, #a0a8b8);
+    clip-path: polygon(50% 0%, 100% 60%, 70% 100%, 30% 100%, 0% 60%);
+    top: 4px;
+    left: 11px;
+  }
+  .ship-scout .ship-wing-l {
+    position: absolute;
+    width: 12px;
+    height: 8px;
+    background: #5070a0;
+    clip-path: polygon(100% 0%, 100% 100%, 0% 60%);
+    top: 10px;
+    left: 0px;
+  }
+  .ship-scout .ship-wing-r {
+    position: absolute;
+    width: 12px;
+    height: 8px;
+    background: #5070a0;
+    clip-path: polygon(0% 0%, 0% 100%, 100% 60%);
+    top: 10px;
+    left: 18px;
+  }
+  .ship-scout .ship-engine {
+    position: absolute;
+    width: 4px;
+    height: 6px;
+    bottom: 0px;
+    left: 13px;
+    background: linear-gradient(180deg, rgba(80,200,255,0.9), transparent);
+    animation: engine-flicker 0.1s steps(2) infinite;
+    filter: blur(1px);
+  }
+
+  /* === L7: WARP SPEED STREAKS === */
+  .warp-streaks {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .warp-streaks svg { width: 100%; height: 100%; overflow: visible; }
+
+  .warp-line {
+    fill: none;
+    stroke-linecap: round;
+    stroke-width: 1;
+  }
+  .wl1  { stroke: rgba(180,210,255,0.5); stroke-dasharray: 20 60; animation: warp-dash 1.5s linear infinite 0s; }
+  .wl2  { stroke: rgba(200,220,255,0.4); stroke-dasharray: 15 70; animation: warp-dash 2.0s linear infinite 0.2s; }
+  .wl3  { stroke: rgba(160,200,255,0.6); stroke-dasharray: 25 50; animation: warp-dash 1.2s linear infinite 0.4s; }
+  .wl4  { stroke: rgba(180,210,255,0.3); stroke-dasharray: 12 75; animation: warp-dash 2.5s linear infinite 0.6s; }
+  .wl5  { stroke: rgba(200,230,255,0.5); stroke-dasharray: 18 65; animation: warp-dash 1.8s linear infinite 0.8s; }
+  .wl6  { stroke: rgba(170,200,255,0.4); stroke-dasharray: 22 55; animation: warp-dash 1.4s linear infinite 1.0s; }
+  .wl7  { stroke: rgba(190,220,255,0.5); stroke-dasharray: 14 68; animation: warp-dash 2.2s linear infinite 0.3s; }
+  .wl8  { stroke: rgba(200,210,255,0.3); stroke-dasharray: 28 45; animation: warp-dash 1.6s linear infinite 0.5s; }
+  .wl9  { stroke: rgba(160,190,255,0.6); stroke-dasharray: 10 80; animation: warp-dash 2.8s linear infinite 0.7s; }
+  .wl10 { stroke: rgba(180,200,255,0.4); stroke-dasharray: 16 62; animation: warp-dash 1.3s linear infinite 0.9s; }
+  .wl11 { stroke: rgba(200,220,255,0.35);stroke-dasharray: 20 58; animation: warp-dash 1.9s linear infinite 0.1s; }
+  .wl12 { stroke: rgba(170,210,255,0.5); stroke-dasharray: 24 52; animation: warp-dash 1.1s linear infinite 1.1s; }
+
+  @keyframes warp-dash { to { stroke-dashoffset: -100; } }
+
+  /* === L8: ORBITING PLANETS === */
+  .planet-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 310px;
+    height: 310px;
+    z-index: 11;
+    pointer-events: none;
+    animation: planet-orbit-spin 20s linear infinite;
+  }
+
+  @keyframes planet-orbit-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .planet {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+  }
+
+  .planet-1 {
+    margin: -8px 0 0 -8px;
+    transform: rotate(0deg) translateX(155px);
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle at 35% 35%, #ff8844, #cc4400, #881100);
+    box-shadow: 0 0 6px rgba(255,100,30,0.4);
+  }
+  .planet-2 {
+    margin: -6px 0 0 -6px;
+    transform: rotate(120deg) translateX(155px);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 35% 35%, #44aaff, #2266cc, #003388);
+    box-shadow: 0 0 5px rgba(50,150,255,0.4);
+  }
+  .planet-3 {
+    margin: -5px 0 0 -5px;
+    transform: rotate(220deg) translateX(155px);
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle at 35% 35%, #aaddaa, #558855, #224422);
+    box-shadow: 0 0 4px rgba(100,200,100,0.3);
+  }
+
+  /* Tiny ring around planet 1 */
+  .planet-1::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotateX(70deg);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,150,80,0.3);
+  }
+
+  /* === L9: FLOATING ASTEROIDS === */
+  .asteroid {
+    position: absolute;
+    pointer-events: none;
+    z-index: 12;
+    opacity: 0;
+  }
+
+  .ast1 { top: 18%; left: -2%;  animation: ast-float 5.0s ease-out infinite 0s; }
+  .ast2 { top: 42%; right: -4%; animation: ast-float 5.5s ease-out infinite 0.8s; }
+  .ast3 { top: 72%; left: -5%;  animation: ast-float 4.5s ease-out infinite 1.6s; }
+  .ast4 { top: 30%; left: -3%;  animation: ast-float 6.0s ease-out infinite 0.4s; }
+  .ast5 { top: 58%; right: -3%; animation: ast-float 4.8s ease-out infinite 1.2s; }
+  .ast6 { top: 82%; right: -5%; animation: ast-float 5.2s ease-out infinite 2.0s; }
+
+  .ast-rock {
+    width: 12px;
+    height: 10px;
+    background: linear-gradient(135deg, #888, #555, #777);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 90% 70%, 100% 100%, 40% 90%, 0% 70%, 10% 30%);
+    position: relative;
+  }
+  .ast-rock::before {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #999;
+    border-radius: 50%;
+    top: 2px;
+    left: 5px;
+  }
+
+  .ast2 .ast-rock, .ast5 .ast-rock { width: 8px; height: 7px; }
+  .ast4 .ast-rock, .ast6 .ast-rock { width: 15px; height: 12px; }
+
+  @keyframes ast-float {
+    0%   { opacity: 0; transform: translateY(0) translateX(0) rotate(0deg); }
+    10%  { opacity: 0.8; transform: translateY(-8px) translateX(5px) rotate(20deg); }
+    40%  { opacity: 0.7; transform: translateY(-40px) translateX(-10px) rotate(80deg); }
+    70%  { opacity: 0.3; transform: translateY(-80px) translateX(8px) rotate(160deg); }
+    100% { opacity: 0; transform: translateY(-130px) translateX(-5px) rotate(240deg); }
+  }
+
+  /* === L10: COMET TRAILS === */
+  .comet-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360px;
+    height: 360px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .comet {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: white;
+  }
+
+  .comet::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    right: 4px;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(180,220,255,0.6), transparent);
+    border-radius: 1px;
+  }
+
+  .comet-1 {
+    top: 20%;
+    left: -10%;
+    animation: comet-fly 4s linear infinite 0s;
+  }
+  .comet-2 {
+    top: 60%;
+    left: -10%;
+    animation: comet-fly 5s linear infinite 2s;
+  }
+  .comet-3 {
+    top: 40%;
+    left: -10%;
+    animation: comet-fly 3.5s linear infinite 3.5s;
+  }
+
+  @keyframes comet-fly {
+    0%   { transform: translateX(0) translateY(0); opacity: 0; }
+    5%   { opacity: 1; }
+    80%  { opacity: 0.6; }
+    100% { transform: translateX(400px) translateY(-30px); opacity: 0; }
+  }
+
+  /* === L11: DEEP SPACE GLOW === */
+  .space-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+    animation: space-glow-pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes space-glow-pulse {
+    0%, 100% {
+      box-shadow:
+        0 0 20px 5px rgba(60,120,200,0.15),
+        0 0 40px 10px rgba(40,80,160,0.08),
+        0 0 80px 20px rgba(30,50,120,0.04);
+    }
+    50% {
+      box-shadow:
+        0 0 30px 8px rgba(80,150,230,0.25),
+        0 0 55px 16px rgba(50,100,180,0.14),
+        0 0 100px 28px rgba(40,60,140,0.07);
+    }
+  }
+
+  /* === L12: COORDINATE TEXT RING === */
+  .coord-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 330px;
+    height: 330px;
+    z-index: 4;
+    pointer-events: none;
+    animation: coord-spin 50s linear infinite;
+    opacity: 0.2;
+  }
+  .coord-ring svg { width: 100%; height: 100%; }
+
+  @keyframes coord-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L13: SCANNING BEAM === */
+  .scan-beam {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    z-index: 7;
+    pointer-events: none;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 350deg,
+      rgba(100,200,255,0) 352deg,
+      rgba(100,200,255,0.15) 356deg,
+      rgba(100,200,255,0.05) 360deg
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent 60%, #000 70%, #000 100%);
+    mask: radial-gradient(farthest-side, transparent 60%, #000 70%, #000 100%);
+    animation: scan-spin 3s linear infinite;
+  }
+
+  @keyframes scan-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L14: FLOATING SPACE EMOJIS === */
+  .space-float {
+    position: absolute;
+    pointer-events: none;
+    z-index: 14;
+    opacity: 0;
+  }
+
+  .sf1 { top: 15%; right: -3%; font-size: 18px; animation: sf-rise 5.5s ease-out infinite 0s; }
+  .sf2 { top: 50%; left: -5%;  font-size: 14px; animation: sf-rise 4.8s ease-out infinite 0.8s; }
+  .sf3 { top: 80%; right: -4%; font-size: 16px; animation: sf-rise 5.0s ease-out infinite 1.6s; }
+  .sf4 { top: 35%; left: -2%;  font-size: 20px; animation: sf-rise 6.0s ease-out infinite 0.4s; }
+  .sf5 { top: 65%; right: -6%; font-size: 15px; animation: sf-rise 4.5s ease-out infinite 1.2s; }
+
+  @keyframes sf-rise {
+    0%   { opacity: 0; transform: translateY(0) scale(0.4); }
+    10%  { opacity: 1; transform: translateY(-10px) scale(1); }
+    50%  { opacity: 0.7; transform: translateY(-60px) scale(0.9); }
+    80%  { opacity: 0.2; transform: translateY(-110px) scale(0.6); }
+    100% { opacity: 0; transform: translateY(-150px) scale(0.3); }
+  }
+
+  /* === L15: FLICKER === */
+  .space-flicker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    z-index: 8;
+    pointer-events: none;
+    animation: sp-flick 0.2s steps(3) infinite;
+  }
+
+  @keyframes sp-flick {
+    0%   { box-shadow: 0 0 4px 1px rgba(100,180,255,0.08); }
+    33%  { box-shadow: 0 0 0 0 transparent; }
+    66%  { box-shadow: 0 0 3px 1px rgba(80,150,255,0.06); }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+
+  /* === L16: MISSION STATUS TEXT === */
+  .mission-status {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    font: bold 9px/1.4 'Courier New', monospace;
+    color: rgba(100,200,255,0.6);
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 6px rgba(100,200,255,0.3);
+    animation: status-blink 2s steps(1) infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes status-blink {
+    0%, 80% { opacity: 1; }
+    81%, 100% { opacity: 0; }
+  }
+
+  /* === L17: BOTTOM COORDINATES === */
+  .coordinates {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    font: 7px/1.4 'Courier New', monospace;
+    color: rgba(100,180,255,0.35);
+    text-align: center;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    animation: coord-flicker 0.5s steps(1) infinite;
+  }
+
+  @keyframes coord-flicker {
+    0%, 70% { opacity: 1; }
+    35%     { opacity: 0.5; }
+    85%     { opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+
+  <!-- MISSION STATUS -->
+  <div class="mission-status">⟨ SECTOR 7-G ACTIVE ⟩</div>
+
+  <!-- PHOTO -->
+  <div class="photo-slot"><span>Your<br>Photo<br>Here</span></div>
+
+  <!-- SHIELD RING -->
+  <div class="shield-ring"></div>
+
+  <!-- NEBULA -->
+  <div class="nebula"></div>
+  <div class="nebula-2"></div>
+
+  <!-- PLANETARY RINGS -->
+  <div class="planet-ring"></div>
+  <div class="planet-ring-2"></div>
+
+  <!-- HUD RINGS -->
+  <div class="hud-ring">
+    <svg viewBox="0 0 224 224">
+      <circle class="hud-seg" cx="112" cy="112" r="108"/>
+      <circle class="hud-seg-bright" cx="112" cy="112" r="108"/>
+    </svg>
+  </div>
+  <div class="hud-ring-outer">
+    <svg viewBox="0 0 250 250">
+      <circle class="hud-outer-seg" cx="125" cy="125" r="121"/>
+    </svg>
+  </div>
+
+  <!-- SCANNING BEAM -->
+  <div class="scan-beam"></div>
+
+  <!-- WARP SPEED STREAKS -->
+  <div class="warp-streaks">
+    <svg viewBox="0 0 350 350">
+      <line class="warp-line wl1"  x1="175" y1="175" x2="175" y2="5"/>
+      <line class="warp-line wl2"  x1="175" y1="175" x2="290" y2="30"/>
+      <line class="warp-line wl3"  x1="175" y1="175" x2="345" y2="100"/>
+      <line class="warp-line wl4"  x1="175" y1="175" x2="345" y2="175"/>
+      <line class="warp-line wl5"  x1="175" y1="175" x2="345" y2="250"/>
+      <line class="warp-line wl6"  x1="175" y1="175" x2="290" y2="320"/>
+      <line class="warp-line wl7"  x1="175" y1="175" x2="175" y2="345"/>
+      <line class="warp-line wl8"  x1="175" y1="175" x2="60"  y2="320"/>
+      <line class="warp-line wl9"  x1="175" y1="175" x2="5"   y2="250"/>
+      <line class="warp-line wl10" x1="175" y1="175" x2="5"   y2="175"/>
+      <line class="warp-line wl11" x1="175" y1="175" x2="5"   y2="100"/>
+      <line class="warp-line wl12" x1="175" y1="175" x2="60"  y2="30"/>
+    </svg>
+  </div>
+
+  <!-- ORBITING SPACESHIPS -->
+  <div class="ship-orbit ship-orbit-1">
+    <div class="ship-container sc1">
+      <div class="spaceship ship-fighter">
+        <div class="ship-body"></div>
+        <div class="ship-wing-l"></div>
+        <div class="ship-wing-r"></div>
+        <div class="ship-engine"></div>
+        <div class="ship-cockpit"></div>
+      </div>
+    </div>
+    <div class="ship-container sc2">
+      <div class="spaceship ship-fighter">
+        <div class="ship-body"></div>
+        <div class="ship-wing-l"></div>
+        <div class="ship-wing-r"></div>
+        <div class="ship-engine"></div>
+        <div class="ship-cockpit"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ship-orbit ship-orbit-2">
+    <div class="ship-container sc3">
+      <div class="spaceship ship-cruiser">
+        <div class="ship-body"></div>
+        <div class="ship-wing-l"></div>
+        <div class="ship-wing-r"></div>
+        <div class="ship-engine"></div>
+        <div class="ship-cockpit"></div>
+      </div>
+    </div>
+    <div class="ship-container sc4">
+      <div class="spaceship ship-cruiser">
+        <div class="ship-body"></div>
+        <div class="ship-wing-l"></div>
+        <div class="ship-wing-r"></div>
+        <div class="ship-engine"></div>
+        <div class="ship-cockpit"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ship-orbit ship-orbit-3">
+    <div class="ship-container sc5">
+      <div class="spaceship ship-scout">
+        <div class="ship-body"></div>
+        <div class="ship-wing-l"></div>
+        <div class="ship-wing-r"></div>
+        <div class="ship-engine"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORBITING PLANETS -->
+  <div class="planet-orbit">
+    <div class="planet planet-1"></div>
+    <div class="planet planet-2"></div>
+    <div class="planet planet-3"></div>
+  </div>
+
+  <!-- FLOATING ASTEROIDS -->
+  <div class="asteroid ast1"><div class="ast-rock"></div></div>
+  <div class="asteroid ast2"><div class="ast-rock"></div></div>
+  <div class="asteroid ast3"><div class="ast-rock"></div></div>
+  <div class="asteroid ast4"><div class="ast-rock"></div></div>
+  <div class="asteroid ast5"><div class="ast-rock"></div></div>
+  <div class="asteroid ast6"><div class="ast-rock"></div></div>
+
+  <!-- COMETS -->
+  <div class="comet-layer">
+    <div class="comet comet-1"></div>
+    <div class="comet comet-2"></div>
+    <div class="comet comet-3"></div>
+  </div>
+
+  <!-- FLOATING SPACE ITEMS -->
+  <div class="space-float sf1">🛸</div>
+  <div class="space-float sf2">🌟</div>
+  <div class="space-float sf3">☄️</div>
+  <div class="space-float sf4">🪐</div>
+  <div class="space-float sf5">✨</div>
+
+  <!-- COORDINATE TEXT RING -->
+  <div class="coord-ring">
+    <svg viewBox="0 0 330 330">
+      <defs><path id="coord-path" d="M165,12 a153,153 0 1,1 0,306 a153,153 0 1,1 0,-306"/></defs>
+      <text fill="rgba(100,180,255,0.5)" font-size="7" font-family="'Courier New', monospace" letter-spacing="2">
+        <textPath href="#coord-path">
+          RA 14h 29m 43s ◦ DEC -62° 40′ 46″ ◦ DIST 4.37 LY ◦ CLASS G2V ◦ SECTOR 7-G ◦ BEARING 270.4 ◦
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <!-- SPACE GLOW -->
+  <div class="space-glow"></div>
+
+  <!-- FLICKER -->
+  <div class="space-flicker"></div>
+
+  <!-- COORDINATES -->
+  <div class="coordinates">
+    RA 14h 29m 43.0s | DEC −62° 40′ 46″<br>
+    WARP FACTOR 9.7 ◦ ETA 00:04:22
+  </div>
+
+</div>
+
+</body>
+</html>

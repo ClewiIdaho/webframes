@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>💎 ROYAL TREASURY</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0a0804;
+    overflow: hidden;
+  }
+
+  /* === AMBIENT GOLD DUST === */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(1.5px 1.5px at 12% 18%, rgba(255,215,0,0.3), transparent),
+      radial-gradient(1px 1px at 88% 72%, rgba(255,200,50,0.2), transparent),
+      radial-gradient(2px 2px at 45% 85%, rgba(255,230,120,0.25), transparent),
+      radial-gradient(1px 1px at 70% 10%, rgba(200,170,80,0.2), transparent),
+      radial-gradient(1.5px 1.5px at 28% 55%, rgba(255,215,0,0.15), transparent),
+      radial-gradient(1px 1px at 82% 40%, rgba(255,240,150,0.2), transparent),
+      radial-gradient(2px 2px at 55% 30%, rgba(218,165,32,0.15), transparent);
+    pointer-events: none;
+    animation: gold-dust-drift 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes gold-dust-drift {
+    0%   { opacity: 0.3; transform: translateY(0); }
+    50%  { opacity: 0.7; transform: translateY(-20px); }
+    100% { opacity: 0.5; transform: translateY(10px); }
+  }
+
+  .stage {
+    position: relative;
+    width: 360px;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* === PHOTO SLOT === */
+  .photo-slot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 185px;
+    height: 185px;
+    border-radius: 50%;
+    background: #12100a;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .photo-slot span {
+    color: rgba(255,215,0,0.15);
+    font: bold 11px/1.3 sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* === L1: INNER GOLD BEZEL === */
+  .gold-bezel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 195px;
+    height: 195px;
+    border-radius: 50%;
+    z-index: 9;
+    pointer-events: none;
+    border: 3px solid;
+    border-image: linear-gradient(
+      135deg,
+      #ffd700 0%,
+      #fff8dc 15%,
+      #daa520 30%,
+      #ffd700 45%,
+      #fffacd 55%,
+      #b8860b 70%,
+      #ffd700 85%,
+      #fff8dc 100%
+    ) 1;
+    border-radius: 50%;
+    /* border-image breaks border-radius, so we use box-shadow instead */
+    border: none;
+    box-shadow:
+      inset 0 0 0 3px #daa520,
+      inset 0 0 0 4px rgba(255,248,220,0.4),
+      inset 0 0 8px rgba(255,215,0,0.3),
+      0 0 0 3px #b8860b,
+      0 0 0 4px rgba(255,248,220,0.3),
+      0 0 10px rgba(255,215,0,0.2);
+    animation: bezel-shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes bezel-shimmer {
+    0%, 100% {
+      box-shadow:
+        inset 0 0 0 3px #daa520,
+        inset 0 0 0 4px rgba(255,248,220,0.4),
+        inset 0 0 8px rgba(255,215,0,0.3),
+        0 0 0 3px #b8860b,
+        0 0 0 4px rgba(255,248,220,0.3),
+        0 0 10px rgba(255,215,0,0.2);
+    }
+    50% {
+      box-shadow:
+        inset 0 0 0 3px #ffd700,
+        inset 0 0 0 5px rgba(255,250,205,0.6),
+        inset 0 0 12px rgba(255,215,0,0.5),
+        0 0 0 3px #daa520,
+        0 0 0 5px rgba(255,250,205,0.5),
+        0 0 18px rgba(255,215,0,0.35);
+    }
+  }
+
+  /* === L2: MAIN GOLD RING (thick, engraved look) === */
+  .gold-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 218px;
+    height: 218px;
+    border-radius: 50%;
+    z-index: 8;
+    pointer-events: none;
+    background: conic-gradient(
+      from 0deg,
+      #b8860b 0deg,
+      #ffd700 15deg,
+      #fff8dc 25deg,
+      #ffd700 35deg,
+      #daa520 50deg,
+      #b8860b 65deg,
+      #ffd700 80deg,
+      #fffacd 90deg,
+      #ffd700 100deg,
+      #b8860b 115deg,
+      #daa520 130deg,
+      #ffd700 145deg,
+      #fff8dc 155deg,
+      #ffd700 165deg,
+      #b8860b 180deg,
+      #ffd700 195deg,
+      #fff8dc 205deg,
+      #ffd700 215deg,
+      #daa520 230deg,
+      #b8860b 245deg,
+      #ffd700 260deg,
+      #fffacd 270deg,
+      #ffd700 280deg,
+      #b8860b 295deg,
+      #daa520 310deg,
+      #ffd700 325deg,
+      #fff8dc 335deg,
+      #ffd700 345deg,
+      #b8860b 360deg
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 9px), #000 100%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 9px), #000 100%);
+    animation: gold-ring-rotate 20s linear infinite;
+  }
+
+  @keyframes gold-ring-rotate { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L3: DIAMOND ENCRUSTED RING (gems embedded in the gold) === */
+  .diamond-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 222px;
+    height: 222px;
+    z-index: 9;
+    pointer-events: none;
+    animation: diamond-ring-spin 25s linear infinite reverse;
+  }
+  .diamond-ring svg { width: 100%; height: 100%; overflow: visible; }
+
+  @keyframes diamond-ring-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* Individual diamonds on the ring */
+  .ring-diamond {
+    animation: diamond-sparkle 2s ease-in-out infinite;
+  }
+  .rd1  { animation-delay: 0s; }
+  .rd2  { animation-delay: 0.25s; }
+  .rd3  { animation-delay: 0.5s; }
+  .rd4  { animation-delay: 0.75s; }
+  .rd5  { animation-delay: 1.0s; }
+  .rd6  { animation-delay: 1.25s; }
+  .rd7  { animation-delay: 1.5s; }
+  .rd8  { animation-delay: 1.75s; }
+  .rd9  { animation-delay: 0.15s; }
+  .rd10 { animation-delay: 0.4s; }
+  .rd11 { animation-delay: 0.65s; }
+  .rd12 { animation-delay: 0.9s; }
+
+  @keyframes diamond-sparkle {
+    0%, 100% { opacity: 0.6; filter: brightness(1); }
+    50%      { opacity: 1; filter: brightness(2); }
+  }
+
+  /* === L4: OUTER ORNATE RING (filigree pattern) === */
+  .ornate-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 252px;
+    height: 252px;
+    border-radius: 50%;
+    z-index: 7;
+    pointer-events: none;
+    background: conic-gradient(
+      from 0deg,
+      rgba(184,134,11,0) 0deg,
+      rgba(255,215,0,0.7) 5deg,
+      rgba(255,248,220,0.9) 10deg,
+      rgba(255,215,0,0.7) 15deg,
+      rgba(184,134,11,0) 20deg,
+      rgba(184,134,11,0) 30deg,
+      rgba(255,215,0,0.7) 35deg,
+      rgba(255,248,220,0.9) 40deg,
+      rgba(255,215,0,0.7) 45deg,
+      rgba(184,134,11,0) 50deg,
+      rgba(184,134,11,0) 60deg,
+      rgba(255,215,0,0.7) 65deg,
+      rgba(255,248,220,0.9) 70deg,
+      rgba(255,215,0,0.7) 75deg,
+      rgba(184,134,11,0) 80deg,
+      rgba(184,134,11,0) 90deg,
+      rgba(255,215,0,0.7) 95deg,
+      rgba(255,248,220,0.9) 100deg,
+      rgba(255,215,0,0.7) 105deg,
+      rgba(184,134,11,0) 110deg,
+      rgba(184,134,11,0) 120deg,
+      rgba(255,215,0,0.7) 125deg,
+      rgba(255,248,220,0.9) 130deg,
+      rgba(255,215,0,0.7) 135deg,
+      rgba(184,134,11,0) 140deg,
+      rgba(184,134,11,0) 150deg,
+      rgba(255,215,0,0.7) 155deg,
+      rgba(255,248,220,0.9) 160deg,
+      rgba(255,215,0,0.7) 165deg,
+      rgba(184,134,11,0) 170deg,
+      rgba(184,134,11,0) 180deg,
+      rgba(255,215,0,0.7) 185deg,
+      rgba(255,248,220,0.9) 190deg,
+      rgba(255,215,0,0.7) 195deg,
+      rgba(184,134,11,0) 200deg,
+      rgba(184,134,11,0) 210deg,
+      rgba(255,215,0,0.7) 215deg,
+      rgba(255,248,220,0.9) 220deg,
+      rgba(255,215,0,0.7) 225deg,
+      rgba(184,134,11,0) 230deg,
+      rgba(184,134,11,0) 240deg,
+      rgba(255,215,0,0.7) 245deg,
+      rgba(255,248,220,0.9) 250deg,
+      rgba(255,215,0,0.7) 255deg,
+      rgba(184,134,11,0) 260deg,
+      rgba(184,134,11,0) 270deg,
+      rgba(255,215,0,0.7) 275deg,
+      rgba(255,248,220,0.9) 280deg,
+      rgba(255,215,0,0.7) 285deg,
+      rgba(184,134,11,0) 290deg,
+      rgba(184,134,11,0) 300deg,
+      rgba(255,215,0,0.7) 305deg,
+      rgba(255,248,220,0.9) 310deg,
+      rgba(255,215,0,0.7) 315deg,
+      rgba(184,134,11,0) 320deg,
+      rgba(184,134,11,0) 330deg,
+      rgba(255,215,0,0.7) 335deg,
+      rgba(255,248,220,0.9) 340deg,
+      rgba(255,215,0,0.7) 345deg,
+      rgba(184,134,11,0) 350deg
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 3px), #000 calc(100% - 1px), transparent 100%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 3px), #000 calc(100% - 1px), transparent 100%);
+    animation: ornate-spin 15s linear infinite;
+  }
+
+  @keyframes ornate-spin { to { transform: translate(-50%,-50%) rotate(-360deg); } }
+
+  /* === L5: GOLDEN GLOW === */
+  .gold-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    z-index: 3;
+    pointer-events: none;
+    animation: gold-glow-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes gold-glow-pulse {
+    0%, 100% {
+      box-shadow:
+        0 0 20px 5px rgba(255,215,0,0.2),
+        0 0 40px 10px rgba(218,165,32,0.1),
+        0 0 80px 20px rgba(184,134,11,0.05);
+    }
+    50% {
+      box-shadow:
+        0 0 30px 10px rgba(255,215,0,0.35),
+        0 0 60px 18px rgba(218,165,32,0.18),
+        0 0 100px 30px rgba(184,134,11,0.09);
+    }
+  }
+
+  /* === L6: LIGHT SWEEP (rotating highlight across the ring) === */
+  .light-sweep {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    z-index: 9;
+    pointer-events: none;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 160deg,
+      rgba(255,255,255,0) 165deg,
+      rgba(255,255,255,0.3) 175deg,
+      rgba(255,255,255,0.5) 180deg,
+      rgba(255,255,255,0.3) 185deg,
+      rgba(255,255,255,0) 195deg,
+      transparent 200deg,
+      transparent 360deg
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 16px), #000 calc(100% - 14px), #000 calc(100% - 1px), transparent 100%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 16px), #000 calc(100% - 14px), #000 calc(100% - 1px), transparent 100%);
+    animation: sweep-rotate 4s linear infinite;
+  }
+
+  @keyframes sweep-rotate { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L7: CROWN AT TOP === */
+  .crown {
+    position: absolute;
+    top: calc(50% - 148px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    font-size: 32px;
+    filter: drop-shadow(0 0 8px rgba(255,215,0,0.6)) drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    animation: crown-bob 3s ease-in-out infinite;
+  }
+
+  @keyframes crown-bob {
+    0%, 100% { transform: translateX(-50%) translateY(0) rotate(-2deg); }
+    25%      { transform: translateX(-50%) translateY(-6px) rotate(1deg); }
+    50%      { transform: translateX(-50%) translateY(-2px) rotate(-1deg); }
+    75%      { transform: translateX(-50%) translateY(-8px) rotate(2deg); }
+  }
+
+  /* === L8: FLOATING DIAMONDS === */
+  .floating-gem {
+    position: absolute;
+    pointer-events: none;
+    z-index: 14;
+    opacity: 0;
+  }
+
+  .fg1  { top: 25%; left: -3%;  font-size: 16px; animation: gem-rise 4.0s ease-out infinite 0s; }
+  .fg2  { top: 40%; right: -5%; font-size: 20px; animation: gem-rise 4.5s ease-out infinite 0.6s; }
+  .fg3  { top: 60%; left: -6%;  font-size: 14px; animation: gem-rise 3.5s ease-out infinite 1.2s; }
+  .fg4  { top: 75%; right: -3%; font-size: 18px; animation: gem-rise 5.0s ease-out infinite 1.8s; }
+  .fg5  { top: 30%; right: -8%; font-size: 15px; animation: gem-rise 3.8s ease-out infinite 0.3s; }
+  .fg6  { top: 55%; left: -8%;  font-size: 22px; animation: gem-rise 4.2s ease-out infinite 0.9s; }
+  .fg7  { top: 70%; right: -6%; font-size: 13px; animation: gem-rise 3.6s ease-out infinite 1.5s; }
+  .fg8  { top: 35%; left: -4%;  font-size: 17px; animation: gem-rise 4.8s ease-out infinite 2.1s; }
+  .fg9  { top: 48%; right: -2%; font-size: 12px; animation: gem-rise 3.2s ease-out infinite 0.5s; }
+  .fg10 { top: 65%; left: -2%;  font-size: 19px; animation: gem-rise 4.4s ease-out infinite 1.0s; }
+
+  @keyframes gem-rise {
+    0%   { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.4); }
+    12%  { opacity: 1; transform: translateY(-15px) rotate(15deg) scale(1); }
+    30%  { opacity: 0.9; transform: translateY(-45px) rotate(-10deg) scale(0.95); }
+    55%  { opacity: 0.6; transform: translateY(-85px) rotate(20deg) scale(0.8); }
+    80%  { opacity: 0.2; transform: translateY(-125px) rotate(-15deg) scale(0.6); }
+    100% { opacity: 0; transform: translateY(-165px) rotate(25deg) scale(0.3); }
+  }
+
+  /* === L9: GOLDEN CHAIN RING (SVG) === */
+  .chain-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 270px;
+    height: 270px;
+    z-index: 6;
+    pointer-events: none;
+    animation: chain-rotate 30s linear infinite;
+    opacity: 0.5;
+  }
+  .chain-ring svg { width: 100%; height: 100%; overflow: visible; }
+
+  @keyframes chain-rotate { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .chain-link {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke: #daa520;
+  }
+  .cl-a { stroke-dasharray: 6 4; animation: chain-shimmer 2s ease-in-out infinite; }
+  .cl-b { stroke-dasharray: 4 6; animation: chain-shimmer 2s ease-in-out infinite 0.5s; stroke: #b8860b; }
+  .cl-c { stroke-dasharray: 8 3; animation: chain-shimmer 2s ease-in-out infinite 1.0s; stroke: #ffd700; }
+
+  @keyframes chain-shimmer {
+    0%, 100% { stroke: #b8860b; }
+    50%      { stroke: #fff8dc; }
+  }
+
+  /* === L10: DIAMOND LIGHT REFLECTIONS (white sparkles) === */
+  .sparkle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 13;
+    width: 0;
+    height: 0;
+  }
+
+  .sparkle::before,
+  .sparkle::after {
+    content: "";
+    position: absolute;
+    background: white;
+  }
+  .sparkle::before {
+    width: 2px;
+    height: 14px;
+    top: -7px;
+    left: -1px;
+    border-radius: 1px;
+  }
+  .sparkle::after {
+    width: 14px;
+    height: 2px;
+    top: -1px;
+    left: -7px;
+    border-radius: 1px;
+  }
+
+  .sp1 { top: calc(50% - 120px); left: calc(50% + 20px); animation: sparkle-flash 2.5s ease-in-out infinite 0s; }
+  .sp2 { top: calc(50% + 10px);  left: calc(50% + 115px);animation: sparkle-flash 3.0s ease-in-out infinite 0.4s; }
+  .sp3 { top: calc(50% + 110px); left: calc(50% - 30px); animation: sparkle-flash 2.0s ease-in-out infinite 0.8s; }
+  .sp4 { top: calc(50% - 20px);  left: calc(50% - 120px);animation: sparkle-flash 2.8s ease-in-out infinite 1.2s; }
+  .sp5 { top: calc(50% - 90px);  left: calc(50% - 80px); animation: sparkle-flash 3.5s ease-in-out infinite 0.2s; }
+  .sp6 { top: calc(50% + 80px);  left: calc(50% + 80px); animation: sparkle-flash 2.2s ease-in-out infinite 0.6s; }
+  .sp7 { top: calc(50% - 60px);  left: calc(50% + 100px);animation: sparkle-flash 2.6s ease-in-out infinite 1.0s; }
+  .sp8 { top: calc(50% + 95px);  left: calc(50% - 90px); animation: sparkle-flash 3.2s ease-in-out infinite 1.4s; }
+
+  @keyframes sparkle-flash {
+    0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+    15%      { opacity: 1; transform: scale(1) rotate(20deg); }
+    30%      { opacity: 0; transform: scale(0.5) rotate(45deg); }
+    50%      { opacity: 0.8; transform: scale(1.2) rotate(10deg); }
+    65%      { opacity: 0; transform: scale(0.3) rotate(35deg); }
+    80%      { opacity: 0.5; transform: scale(0.8) rotate(-10deg); }
+  }
+
+  /* === L11: GOLDEN PARTICLE DUST (tiny circles) === */
+  .gold-dust {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 12;
+  }
+
+  .gd1  { width: 3px; height: 3px; top: -8px; left: 48%; background: #ffd700; animation: dust-float 3.0s ease-in-out infinite 0s; }
+  .gd2  { width: 2px; height: 2px; top: 12%; right: -4px; background: #fff8dc; animation: dust-float 3.5s ease-in-out infinite 0.3s; }
+  .gd3  { width: 4px; height: 4px; top: 30%; right: -10px; background: #daa520; animation: dust-float 2.5s ease-in-out infinite 0.6s; }
+  .gd4  { width: 2px; height: 2px; bottom: 25%; right: -2px; background: #ffd700; animation: dust-float 3.2s ease-in-out infinite 0.9s; }
+  .gd5  { width: 3px; height: 3px; bottom: -5px; left: 42%; background: #fff8dc; animation: dust-float 2.8s ease-in-out infinite 1.2s; }
+  .gd6  { width: 2px; height: 2px; bottom: 18%; left: -6px; background: #daa520; animation: dust-float 3.8s ease-in-out infinite 0.2s; }
+  .gd7  { width: 3px; height: 3px; top: 22%; left: -8px; background: #ffd700; animation: dust-float 2.6s ease-in-out infinite 0.5s; }
+  .gd8  { width: 4px; height: 4px; top: -4px; left: 30%; background: #b8860b; animation: dust-float 3.4s ease-in-out infinite 0.8s; }
+  .gd9  { width: 2px; height: 2px; top: 55%; right: -6px; background: #fffacd; animation: dust-float 2.2s ease-in-out infinite 1.1s; }
+  .gd10 { width: 3px; height: 3px; bottom: -8px; left: 65%; background: #ffd700; animation: dust-float 3.6s ease-in-out infinite 0.4s; }
+  .gd11 { width: 2px; height: 2px; top: 45%; left: -5px; background: #fff8dc; animation: dust-float 2.9s ease-in-out infinite 0.7s; }
+  .gd12 { width: 3px; height: 3px; top: 5%; left: 15%; background: #daa520; animation: dust-float 3.1s ease-in-out infinite 1.0s; }
+
+  @keyframes dust-float {
+    0%, 100% { opacity: 0; transform: translateY(0) scale(0.5); }
+    20%      { opacity: 1; transform: translateY(-10px) scale(1.2); }
+    50%      { opacity: 0.7; transform: translateY(-25px) scale(1); }
+    80%      { opacity: 0.2; transform: translateY(-38px) scale(0.6); }
+  }
+
+  /* === L12: ORBITING LARGE DIAMONDS === */
+  .orbit-gems {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    z-index: 11;
+    pointer-events: none;
+    animation: orbit-gems-spin 12s linear infinite;
+  }
+
+  @keyframes orbit-gems-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .orbit-gem {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    font-size: 20px;
+    filter: drop-shadow(0 0 6px rgba(185,242,255,0.6));
+  }
+
+  .og1 { transform: rotate(0deg)   translateX(140px) rotate(0deg);   animation: og-counter 12s linear infinite; }
+  .og2 { transform: rotate(90deg)  translateX(140px) rotate(-90deg); animation: og-counter 12s linear infinite; }
+  .og3 { transform: rotate(180deg) translateX(140px) rotate(-180deg);animation: og-counter 12s linear infinite; }
+  .og4 { transform: rotate(270deg) translateX(140px) rotate(-270deg);animation: og-counter 12s linear infinite; }
+
+  /* Counter-rotate so diamonds stay upright */
+  @keyframes og-counter {
+    to { transform: rotate(calc(var(--start) + 360deg)) translateX(140px) rotate(calc(-1 * (var(--start) + 360deg))); }
+  }
+  /* Use animation on parent instead for simplicity — gems rotate with parent */
+
+  .og1 .og-icon, .og2 .og-icon, .og3 .og-icon, .og4 .og-icon {
+    animation: og-sparkle 1.5s ease-in-out infinite;
+    display: block;
+  }
+  .og2 .og-icon { animation-delay: 0.4s; }
+  .og3 .og-icon { animation-delay: 0.8s; }
+  .og4 .og-icon { animation-delay: 1.2s; }
+
+  @keyframes og-sparkle {
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 4px rgba(185,242,255,0.4)); transform: scale(1); }
+    50%      { filter: brightness(1.8) drop-shadow(0 0 12px rgba(185,242,255,0.8)); transform: scale(1.15); }
+  }
+
+  /* === L13: LIQUID GOLD DRIP EFFECT (SVG animated paths) === */
+  .gold-drips {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+    height: 240px;
+    z-index: 5;
+    pointer-events: none;
+    animation: drip-rotate 18s linear infinite reverse;
+  }
+  .gold-drips svg { width: 100%; height: 100%; overflow: visible; }
+
+  @keyframes drip-rotate { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .drip-path {
+    fill: none;
+    stroke-linecap: round;
+    stroke-width: 2.5;
+    filter: url(#gold-blur);
+  }
+  .dp1 { stroke: #ffd700; stroke-dasharray: 12 20 6 25; animation: drip-flow 2.0s linear infinite; }
+  .dp2 { stroke: #daa520; stroke-dasharray: 8 25 10 18; animation: drip-flow 2.5s linear infinite; }
+  .dp3 { stroke: #fff8dc; stroke-dasharray: 15 15 4 28; animation: drip-flow 1.8s linear infinite; }
+  .dp4 { stroke: #b8860b; stroke-dasharray: 10 20 8 22; animation: drip-flow 2.2s linear infinite; }
+  .dp5 { stroke: #ffd700; stroke-dasharray: 6 28 12 16; animation: drip-flow 2.8s linear infinite; }
+  .dp6 { stroke: #fffacd; stroke-dasharray: 14 16 5 24; animation: drip-flow 1.6s linear infinite; }
+
+  @keyframes drip-flow { to { stroke-dashoffset: -80; } }
+
+  /* === L14: RAINBOW DIAMOND REFRACTION (subtle prismatic ring) === */
+  .refraction-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 236px;
+    height: 236px;
+    border-radius: 50%;
+    z-index: 6;
+    pointer-events: none;
+    background: conic-gradient(
+      from 0deg,
+      rgba(255,0,0,0.15),
+      rgba(255,127,0,0.15),
+      rgba(255,255,0,0.15),
+      rgba(0,255,0,0.15),
+      rgba(0,0,255,0.15),
+      rgba(75,0,130,0.15),
+      rgba(148,0,211,0.15),
+      rgba(255,0,0,0.15)
+    );
+    filter: blur(6px);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 8px), #000 calc(100% - 2px), transparent 100%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 8px), #000 calc(100% - 2px), transparent 100%);
+    animation: refract-spin 8s linear infinite;
+  }
+
+  @keyframes refract-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L15: LUXURY FLICKER === */
+  .luxury-flicker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 228px;
+    height: 228px;
+    border-radius: 50%;
+    z-index: 8;
+    pointer-events: none;
+    animation: lux-flick 0.2s steps(3) infinite;
+  }
+
+  @keyframes lux-flick {
+    0%   { box-shadow: 0 0 4px 1px rgba(255,248,220,0.08); }
+    33%  { box-shadow: 0 0 0 0 transparent; }
+    66%  { box-shadow: 0 0 3px 1px rgba(255,215,0,0.06); }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+
+  /* === L16: BOTTOM GOLDEN REFLECTION === */
+  .gold-reflect {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) scaleY(0.25) scaleX(0.7);
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    background: conic-gradient(
+      from 0deg,
+      rgba(255,215,0,0.1),
+      rgba(218,165,32,0.1),
+      rgba(184,134,11,0.1),
+      rgba(255,215,0,0.1)
+    );
+    filter: blur(16px);
+    opacity: 0.5;
+    animation: reflect-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes reflect-pulse {
+    0%, 100% { opacity: 0.3; }
+    50%      { opacity: 0.6; }
+  }
+
+  /* === RUNE/INSCRIPTION RING === */
+  .inscription-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 295px;
+    height: 295px;
+    z-index: 5;
+    pointer-events: none;
+    animation: inscript-spin 35s linear infinite;
+    opacity: 0.25;
+  }
+  .inscription-ring svg { width: 100%; height: 100%; }
+
+  @keyframes inscript-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div class="stage">
+
+  <!-- CROWN -->
+  <div class="crown">👑</div>
+
+  <!-- PHOTO -->
+  <div class="photo-slot"><span>Your<br>Photo<br>Here</span></div>
+
+  <!-- GOLD BEZEL -->
+  <div class="gold-bezel"></div>
+
+  <!-- MAIN GOLD RING -->
+  <div class="gold-ring"></div>
+
+  <!-- DIAMOND ENCRUSTED RING (SVG) -->
+  <div class="diamond-ring">
+    <svg viewBox="0 0 222 222">
+      <defs>
+        <filter id="gem-glow">
+          <feGaussianBlur stdDeviation="1.5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <radialGradient id="diamond-fill" cx="40%" cy="35%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="40%" stop-color="#b9f2ff"/>
+          <stop offset="100%" stop-color="#4fc3f7"/>
+        </radialGradient>
+      </defs>
+      <!-- 12 diamonds evenly spaced on the ring -->
+      <polygon class="ring-diamond rd1"  points="111,6  116,14  111,22  106,14"  fill="url(#diamond-fill)" filter="url(#gem-glow)"/>
+      <polygon class="ring-diamond rd2"  points="163,18 168,26 163,34 158,26"    fill="url(#diamond-fill)" filter="url(#gem-glow)"/>
+      <polygon class="ring-diamond rd3"  points="203,58 208,66 203,74 198,66"    fill="url(#diamond-fill)" filter="url(#gem-glow)"/>
+      <polygon class="ring-diamond rd4"  points="216,111 221,119 216,127 211,119" fill="url(#diamond-fill)" filter="url(#gem-glow)"/>
+      <polygon class="ring-diamond rd5"  points="203,163 208,171 203,179 198,171" fill="url(#diamond-fill)" filter="url(#gem-glow)"/>
+      <polygon class="ring-diamond rd6"  points="163,203 168,211 163,219 158,211" fill="url(#diamond-fill)" filter="url(#gem-glow)"/>
+      <polygon class="ring-diamond rd7"  points="111,216 116,224 111,232 106,224" fill="#b9f2ff" filter="url(#gem-glow)" transform="translate(0,-16)"/>
+      <polygon class="ring-diamond rd8"  points="59,203 64,211 59,219 54,211"    fill="url(#diamond-fill)" filter="url(#gem-glow)"/>
+      <polygon class="ring-diamond rd9"  points="19,163 24,171 19,179 14,171"    fill="url(#diamond-fill)" filter="url(#gem-glow)"/>
+      <polygon class="ring-diamond rd10" points="6,111 11,119 6,127 1,119"       fill="url(#diamond-fill)" filter="url(#gem-glow)"/>
+      <polygon class="ring-diamond rd11" points="19,58 24,66 19,74 14,66"        fill="url(#diamond-fill)" filter="url(#gem-glow)"/>
+      <polygon class="ring-diamond rd12" points="59,18 64,26 59,34 54,26"        fill="url(#diamond-fill)" filter="url(#gem-glow)"/>
+    </svg>
+  </div>
+
+  <!-- ORNATE RING -->
+  <div class="ornate-ring"></div>
+
+  <!-- LIGHT SWEEP -->
+  <div class="light-sweep"></div>
+
+  <!-- PRISMATIC REFRACTION -->
+  <div class="refraction-ring"></div>
+
+  <!-- GOLDEN GLOW -->
+  <div class="gold-glow"></div>
+
+  <!-- CHAIN RING -->
+  <div class="chain-ring">
+    <svg viewBox="0 0 270 270">
+      <defs>
+        <filter id="gold-blur">
+          <feGaussianBlur stdDeviation="1.5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <circle class="chain-link cl-a" cx="135" cy="135" r="130"/>
+      <circle class="chain-link cl-b" cx="135" cy="135" r="126"/>
+      <circle class="chain-link cl-c" cx="135" cy="135" r="122"/>
+    </svg>
+  </div>
+
+  <!-- GOLD DRIPS -->
+  <div class="gold-drips">
+    <svg viewBox="0 0 240 240">
+      <circle class="drip-path dp1" cx="120" cy="120" r="115" fill="none"/>
+      <circle class="drip-path dp2" cx="120" cy="120" r="112" fill="none"/>
+      <circle class="drip-path dp3" cx="120" cy="120" r="109" fill="none"/>
+      <circle class="drip-path dp4" cx="120" cy="120" r="106" fill="none"/>
+      <circle class="drip-path dp5" cx="120" cy="120" r="118" fill="none"/>
+      <circle class="drip-path dp6" cx="120" cy="120" r="103" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- INSCRIPTION RING -->
+  <div class="inscription-ring">
+    <svg viewBox="0 0 295 295">
+      <defs><path id="inscript-path" d="M147.5,15 a132.5,132.5 0 1,1 0,265 a132.5,132.5 0 1,1 0,-265"/></defs>
+      <text fill="rgba(218,165,32,0.6)" font-size="9" font-family="serif" letter-spacing="4" font-style="italic">
+        <textPath href="#inscript-path">
+          ◆ ✦ ♦ ◇ ✧ ◆ ✦ ♦ ◇ ✧ ◆ ✦ ♦ ◇ ✧ ◆ ✦ ♦ ◇ ✧ ◆ ✦ ♦ ◇ ✧ ◆ ✦ ♦ ◇ ✧ ◆ ✦ ♦ ◇ ✧
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <!-- ORBITING LARGE DIAMONDS -->
+  <div class="orbit-gems">
+    <div class="orbit-gem og1"><span class="og-icon">💎</span></div>
+    <div class="orbit-gem og2"><span class="og-icon">💎</span></div>
+    <div class="orbit-gem og3"><span class="og-icon">💎</span></div>
+    <div class="orbit-gem og4"><span class="og-icon">💎</span></div>
+  </div>
+
+  <!-- SPARKLE REFLECTIONS -->
+  <div class="sparkle sp1"></div>
+  <div class="sparkle sp2"></div>
+  <div class="sparkle sp3"></div>
+  <div class="sparkle sp4"></div>
+  <div class="sparkle sp5"></div>
+  <div class="sparkle sp6"></div>
+  <div class="sparkle sp7"></div>
+  <div class="sparkle sp8"></div>
+
+  <!-- GOLD DUST -->
+  <div class="gold-dust gd1"></div><div class="gold-dust gd2"></div>
+  <div class="gold-dust gd3"></div><div class="gold-dust gd4"></div>
+  <div class="gold-dust gd5"></div><div class="gold-dust gd6"></div>
+  <div class="gold-dust gd7"></div><div class="gold-dust gd8"></div>
+  <div class="gold-dust gd9"></div><div class="gold-dust gd10"></div>
+  <div class="gold-dust gd11"></div><div class="gold-dust gd12"></div>
+
+  <!-- FLOATING GEMS -->
+  <div class="floating-gem fg1">💎</div>
+  <div class="floating-gem fg2">💠</div>
+  <div class="floating-gem fg3">💎</div>
+  <div class="floating-gem fg4">💠</div>
+  <div class="floating-gem fg5">💎</div>
+  <div class="floating-gem fg6">💠</div>
+  <div class="floating-gem fg7">💎</div>
+  <div class="floating-gem fg8">💠</div>
+  <div class="floating-gem fg9">💎</div>
+  <div class="floating-gem fg10">💠</div>
+
+  <!-- LUXURY FLICKER -->
+  <div class="luxury-flicker"></div>
+
+  <!-- GOLDEN REFLECTION -->
+  <div class="gold-reflect"></div>
+
+</div>
+
+</body>
+</html>

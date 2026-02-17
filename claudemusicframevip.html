@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🎤 STUDIO LEGEND</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #08060e;
+    overflow: hidden;
+  }
+
+  /* === AMBIENT STUDIO HAZE === */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(255,50,50,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(50,50,255,0.06) 0%, transparent 50%),
+      radial-gradient(2px 2px at 15% 30%, rgba(255,200,50,0.2), transparent),
+      radial-gradient(1px 1px at 85% 65%, rgba(255,100,50,0.15), transparent),
+      radial-gradient(1px 1px at 50% 10%, rgba(200,200,255,0.1), transparent),
+      radial-gradient(2px 2px at 40% 75%, rgba(255,50,100,0.12), transparent);
+    pointer-events: none;
+    animation: studio-haze 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes studio-haze {
+    0%   { opacity: 0.4; }
+    100% { opacity: 0.8; }
+  }
+
+  .stage {
+    position: relative;
+    width: 380px;
+    height: 440px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* === PHOTO SLOT === */
+  .photo-slot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 185px;
+    height: 185px;
+    border-radius: 50%;
+    background: #100e18;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .photo-slot span {
+    color: rgba(255,200,50,0.15);
+    font: bold 11px/1.3 sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* === L1: VINYL RECORD INNER RING (the frame itself looks like a record) === */
+  .vinyl-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    z-index: 8;
+    pointer-events: none;
+    background:
+      radial-gradient(circle,
+        transparent 80px,
+        #1a1a2a 81px,
+        #0d0d1a 83px,
+        #1a1a2a 85px,
+        #0d0d1a 87px,
+        #1a1a2a 89px,
+        #0d0d1a 91px,
+        #1a1a2a 93px,
+        #0d0d1a 95px,
+        #1a1a2a 97px,
+        #0d0d1a 99px,
+        #1a1a2a 101px,
+        #0d0d1a 103px,
+        #1a1a2a 105px,
+        #0d0d1a 107px,
+        #1a1a2a 109px,
+        #0d0d1a 111px,
+        #1a1a2a 113px,
+        transparent 114px
+      );
+    animation: vinyl-main-spin 6s linear infinite;
+  }
+
+  @keyframes vinyl-main-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* Vinyl label highlight */
+  .vinyl-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(
+      135deg,
+      rgba(255,255,255,0.04) 0%,
+      transparent 40%,
+      transparent 60%,
+      rgba(255,255,255,0.02) 100%
+    );
+  }
+
+  /* === L2: GOLD PLATING RING === */
+  .gold-plate {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    z-index: 7;
+    pointer-events: none;
+    box-shadow:
+      inset 0 0 0 3px #b8860b,
+      inset 0 0 0 5px rgba(255,215,0,0.3),
+      0 0 0 3px #8b6914,
+      0 0 0 5px rgba(255,215,0,0.2),
+      0 0 15px rgba(255,215,0,0.15);
+    animation: plate-shimmer 4s ease-in-out infinite;
+  }
+
+  @keyframes plate-shimmer {
+    0%, 100% {
+      box-shadow:
+        inset 0 0 0 3px #b8860b,
+        inset 0 0 0 5px rgba(255,215,0,0.3),
+        0 0 0 3px #8b6914,
+        0 0 0 5px rgba(255,215,0,0.2),
+        0 0 15px rgba(255,215,0,0.15);
+    }
+    50% {
+      box-shadow:
+        inset 0 0 0 3px #daa520,
+        inset 0 0 0 6px rgba(255,248,220,0.5),
+        0 0 0 3px #b8860b,
+        0 0 0 6px rgba(255,248,220,0.35),
+        0 0 25px rgba(255,215,0,0.3);
+    }
+  }
+
+  /* === L3: LIGHT SWEEP ON GOLD === */
+  .gold-sweep {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 246px;
+    height: 246px;
+    border-radius: 50%;
+    z-index: 8;
+    pointer-events: none;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 155deg,
+      rgba(255,255,255,0) 160deg,
+      rgba(255,255,255,0.15) 175deg,
+      rgba(255,255,255,0.25) 180deg,
+      rgba(255,255,255,0.15) 185deg,
+      rgba(255,255,255,0) 200deg,
+      transparent 205deg,
+      transparent 360deg
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 10px), #000 100%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 10px), #000 100%);
+    animation: sweep 5s linear infinite;
+  }
+
+  @keyframes sweep { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L4: AUDIO CABLE RING (coiled look) === */
+  .cable-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 268px;
+    height: 268px;
+    z-index: 6;
+    pointer-events: none;
+    animation: cable-rotate 22s linear infinite reverse;
+  }
+  .cable-ring svg { width: 100%; height: 100%; overflow: visible; }
+
+  @keyframes cable-rotate { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .cable-path {
+    fill: none;
+    stroke-linecap: round;
+    stroke-width: 2.5;
+  }
+  .cp1 { stroke: #2a2a3a; stroke-dasharray: 10 5; }
+  .cp2 { stroke: #3a3a4a; stroke-dasharray: 6 8; animation: cable-pulse 3s ease-in-out infinite; }
+  .cp3 { stroke: #1a1a2a; stroke-dasharray: 12 4; }
+
+  @keyframes cable-pulse {
+    0%, 100% { stroke: #3a3a4a; }
+    50%      { stroke: #5a5a6a; }
+  }
+
+  /* Colored stripe on cable */
+  .cable-stripe {
+    fill: none;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-dasharray: 3 18;
+  }
+  .cs-red  { stroke: rgba(255,50,50,0.5); animation: stripe-flow 2s linear infinite; }
+  .cs-blue { stroke: rgba(50,100,255,0.4); animation: stripe-flow 2.5s linear infinite; }
+
+  @keyframes stripe-flow { to { stroke-dashoffset: -60; } }
+
+  /* === L5: SOUND WAVE PULSES === */
+  .sound-wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 4;
+    border: 2px solid rgba(255,200,50,0);
+  }
+
+  .sw1 {
+    width: 230px; height: 230px;
+    animation: sound-expand 2.5s ease-out infinite 0s;
+  }
+  .sw2 {
+    width: 230px; height: 230px;
+    animation: sound-expand 2.5s ease-out infinite 0.8s;
+  }
+  .sw3 {
+    width: 230px; height: 230px;
+    animation: sound-expand 2.5s ease-out infinite 1.6s;
+  }
+
+  @keyframes sound-expand {
+    0%   { width: 230px; height: 230px; border-color: rgba(255,200,50,0.4); opacity: 1; }
+    100% { width: 380px; height: 380px; border-color: rgba(255,200,50,0); opacity: 0; }
+  }
+
+  /* === L6: ORBITING VINYL RECORDS === */
+  .orbit-records {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 330px;
+    height: 330px;
+    z-index: 12;
+    pointer-events: none;
+    animation: records-orbit 15s linear infinite;
+  }
+
+  @keyframes records-orbit { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .orbit-record {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+
+  /* Each record is a mini vinyl disc */
+  .mini-vinyl {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle,
+        #333 0%,
+        #333 20%,
+        #1a1a1a 21%,
+        #222 25%,
+        #1a1a1a 29%,
+        #222 33%,
+        #1a1a1a 37%,
+        #222 41%,
+        #1a1a1a 45%,
+        #222 49%,
+        #1a1a1a 53%,
+        #222 57%,
+        #1a1a1a 61%,
+        #222 100%
+      );
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+
+  /* Record label */
+  .mini-vinyl::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffd700 0%, #daa520 60%, #b8860b 100%);
+  }
+
+  /* Center hole */
+  .mini-vinyl::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #0a0a1a;
+  }
+
+  /* Label colors vary */
+  .rec-gold .mini-vinyl::before  { background: radial-gradient(circle, #ffd700, #b8860b); }
+  .rec-red .mini-vinyl::before   { background: radial-gradient(circle, #ff4444, #aa0000); }
+  .rec-blue .mini-vinyl::before  { background: radial-gradient(circle, #4488ff, #0044aa); }
+  .rec-green .mini-vinyl::before { background: radial-gradient(circle, #44ff88, #00aa44); }
+  .rec-plat .mini-vinyl::before  { background: radial-gradient(circle, #e0e0e0, #888888); }
+
+  /* Position records around the orbit */
+  .or1 { margin: -20px 0 0 -20px; transform: rotate(0deg)   translateX(165px); }
+  .or2 { margin: -20px 0 0 -20px; transform: rotate(60deg)  translateX(165px); }
+  .or3 { margin: -20px 0 0 -20px; transform: rotate(120deg) translateX(165px); }
+  .or4 { margin: -20px 0 0 -20px; transform: rotate(180deg) translateX(165px); }
+  .or5 { margin: -20px 0 0 -20px; transform: rotate(240deg) translateX(165px); }
+  .or6 { margin: -20px 0 0 -20px; transform: rotate(300deg) translateX(165px); }
+
+  /* Each record self-spins */
+  .or1 .mini-vinyl { animation: self-spin 2.0s linear infinite; }
+  .or2 .mini-vinyl { animation: self-spin 1.5s linear infinite reverse; }
+  .or3 .mini-vinyl { animation: self-spin 1.8s linear infinite; }
+  .or4 .mini-vinyl { animation: self-spin 2.2s linear infinite reverse; }
+  .or5 .mini-vinyl { animation: self-spin 1.6s linear infinite; }
+  .or6 .mini-vinyl { animation: self-spin 2.4s linear infinite reverse; }
+
+  @keyframes self-spin { to { transform: rotate(360deg); } }
+
+  /* Vinyl light reflection */
+  .mini-vinyl .vinyl-sheen {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(
+      135deg,
+      rgba(255,255,255,0.08) 0%,
+      transparent 45%,
+      transparent 55%,
+      rgba(255,255,255,0.04) 100%
+    );
+  }
+
+  /* === L7: FLOATING MICROPHONES === */
+  .floating-mic {
+    position: absolute;
+    pointer-events: none;
+    z-index: 14;
+    opacity: 0;
+    font-size: 22px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+  }
+
+  .mic1 { top: 20%; left: -4%;  animation: mic-float 5.0s ease-in-out infinite 0s; }
+  .mic2 { top: 45%; right: -6%; animation: mic-float 5.5s ease-in-out infinite 1.0s; font-size: 18px; }
+  .mic3 { top: 70%; left: -6%;  animation: mic-float 4.5s ease-in-out infinite 2.0s; font-size: 20px; }
+  .mic4 { top: 30%; right: -3%; animation: mic-float 6.0s ease-in-out infinite 0.5s; font-size: 16px; }
+  .mic5 { top: 60%; right: -5%; animation: mic-float 4.8s ease-in-out infinite 1.5s; font-size: 24px; }
+  .mic6 { top: 80%; left: -3%;  animation: mic-float 5.2s ease-in-out infinite 2.5s; font-size: 17px; }
+
+  @keyframes mic-float {
+    0%   { opacity: 0; transform: translateY(20px) rotate(-15deg) scale(0.5); }
+    10%  { opacity: 1; transform: translateY(0px) rotate(0deg) scale(1); }
+    30%  { opacity: 1; transform: translateY(-15px) rotate(5deg) scale(1.05); }
+    50%  { opacity: 0.9; transform: translateY(-30px) rotate(-3deg) scale(1); }
+    70%  { opacity: 0.6; transform: translateY(-50px) rotate(8deg) scale(0.9); }
+    90%  { opacity: 0.2; transform: translateY(-75px) rotate(-5deg) scale(0.7); }
+    100% { opacity: 0; transform: translateY(-90px) rotate(10deg) scale(0.5); }
+  }
+
+  /* === L8: FLOATING RECORDS (rising, separate from orbit) === */
+  .floating-rec {
+    position: absolute;
+    pointer-events: none;
+    z-index: 13;
+    opacity: 0;
+  }
+
+  .fr1 { top: 35%; left: -8%;  animation: rec-rise 5.5s ease-out infinite 0.2s; font-size: 26px; }
+  .fr2 { top: 55%; right: -7%; animation: rec-rise 6.0s ease-out infinite 1.2s; font-size: 22px; }
+  .fr3 { top: 75%; left: -5%;  animation: rec-rise 4.8s ease-out infinite 2.2s; font-size: 18px; }
+  .fr4 { top: 25%; right: -4%; animation: rec-rise 5.2s ease-out infinite 0.8s; font-size: 20px; }
+  .fr5 { top: 50%; left: -3%;  animation: rec-rise 5.8s ease-out infinite 1.8s; font-size: 24px; }
+
+  @keyframes rec-rise {
+    0%   { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.4); }
+    12%  { opacity: 1; transform: translateY(-10px) rotate(30deg) scale(1); }
+    40%  { opacity: 0.8; transform: translateY(-50px) rotate(120deg) scale(0.9); }
+    70%  { opacity: 0.3; transform: translateY(-100px) rotate(240deg) scale(0.7); }
+    100% { opacity: 0; transform: translateY(-150px) rotate(360deg) scale(0.4); }
+  }
+
+  /* === L9: TURNTABLE NEEDLE ARM === */
+  .needle-arm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 15;
+    pointer-events: none;
+    transform-origin: 0% 0%;
+    transform: translate(108px, -108px) rotate(25deg);
+    animation: needle-sway 8s ease-in-out infinite;
+  }
+
+  @keyframes needle-sway {
+    0%, 100% { transform: translate(108px, -108px) rotate(25deg); }
+    50%      { transform: translate(108px, -108px) rotate(32deg); }
+  }
+
+  .needle-arm-bar {
+    width: 55px;
+    height: 3px;
+    background: linear-gradient(90deg, #666, #aaa, #888);
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  }
+
+  /* Needle head */
+  .needle-arm-bar::before {
+    content: "";
+    position: absolute;
+    right: -6px;
+    top: -3px;
+    width: 8px;
+    height: 9px;
+    background: linear-gradient(135deg, #999, #444);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
+
+  /* Pivot point */
+  .needle-arm-bar::after {
+    content: "";
+    position: absolute;
+    left: -4px;
+    top: -4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #aaa, #555);
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+  }
+
+  /* === L10: STUDIO BOOTH LIGHT (red "RECORDING" indicator) === */
+  .rec-light {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .rec-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ff2222;
+    animation: rec-blink 1.2s steps(1) infinite;
+    box-shadow: 0 0 8px rgba(255,34,34,0.6), 0 0 16px rgba(255,34,34,0.3);
+  }
+
+  @keyframes rec-blink {
+    0%, 55% { opacity: 1; }
+    56%, 100% { opacity: 0; }
+  }
+
+  .rec-text {
+    font: bold 10px/1 sans-serif;
+    color: #ff2222;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 0 6px rgba(255,34,34,0.5);
+    animation: rec-blink 1.2s steps(1) infinite;
+  }
+
+  /* === L11: WAVEFORM VISUALIZATION RING === */
+  .waveform-vis {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 256px;
+    height: 256px;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .waveform-vis svg { width: 100%; height: 100%; overflow: visible; }
+
+  .wave-bar {
+    fill: rgba(255,200,50,0.5);
+    transform-origin: center;
+  }
+
+  /* Animate each bar individually */
+  .wb1  { animation: wbar 0.8s  ease-in-out infinite 0.00s; }
+  .wb2  { animation: wbar 0.6s  ease-in-out infinite 0.05s; }
+  .wb3  { animation: wbar 0.9s  ease-in-out infinite 0.10s; }
+  .wb4  { animation: wbar 0.5s  ease-in-out infinite 0.15s; }
+  .wb5  { animation: wbar 1.0s  ease-in-out infinite 0.20s; }
+  .wb6  { animation: wbar 0.7s  ease-in-out infinite 0.25s; }
+  .wb7  { animation: wbar 0.55s ease-in-out infinite 0.30s; }
+  .wb8  { animation: wbar 0.85s ease-in-out infinite 0.35s; }
+  .wb9  { animation: wbar 0.65s ease-in-out infinite 0.40s; }
+  .wb10 { animation: wbar 0.95s ease-in-out infinite 0.45s; }
+  .wb11 { animation: wbar 0.5s  ease-in-out infinite 0.50s; }
+  .wb12 { animation: wbar 0.75s ease-in-out infinite 0.55s; }
+  .wb13 { animation: wbar 0.6s  ease-in-out infinite 0.60s; }
+  .wb14 { animation: wbar 0.9s  ease-in-out infinite 0.65s; }
+  .wb15 { animation: wbar 0.55s ease-in-out infinite 0.70s; }
+  .wb16 { animation: wbar 0.8s  ease-in-out infinite 0.75s; }
+  .wb17 { animation: wbar 0.7s  ease-in-out infinite 0.80s; }
+  .wb18 { animation: wbar 0.6s  ease-in-out infinite 0.85s; }
+  .wb19 { animation: wbar 0.85s ease-in-out infinite 0.90s; }
+  .wb20 { animation: wbar 0.5s  ease-in-out infinite 0.95s; }
+  .wb21 { animation: wbar 0.9s  ease-in-out infinite 0.03s; }
+  .wb22 { animation: wbar 0.65s ease-in-out infinite 0.08s; }
+  .wb23 { animation: wbar 0.75s ease-in-out infinite 0.13s; }
+  .wb24 { animation: wbar 0.55s ease-in-out infinite 0.18s; }
+
+  @keyframes wbar {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.4); }
+    50%      { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* === L12: FLOATING MUSIC NOTES & SHEETS === */
+  .float-note {
+    position: absolute;
+    pointer-events: none;
+    z-index: 14;
+    opacity: 0;
+  }
+
+  .fn1  { top: 22%; left: 2%;   font-size: 14px; animation: note-drift 4.0s ease-out infinite 0s; }
+  .fn2  { top: 40%; right: 0%;  font-size: 18px; animation: note-drift 4.5s ease-out infinite 0.5s; }
+  .fn3  { top: 65%; left: -2%;  font-size: 12px; animation: note-drift 3.5s ease-out infinite 1.0s; }
+  .fn4  { top: 78%; right: -2%; font-size: 16px; animation: note-drift 5.0s ease-out infinite 1.5s; }
+  .fn5  { top: 33%; left: -5%;  font-size: 15px; animation: note-drift 3.8s ease-out infinite 2.0s; }
+  .fn6  { top: 55%; right: -4%; font-size: 13px; animation: note-drift 4.2s ease-out infinite 0.3s; }
+  .fn7  { top: 85%; left: 1%;   font-size: 17px; animation: note-drift 4.8s ease-out infinite 0.8s; }
+  .fn8  { top: 15%; right: 2%;  font-size: 11px; animation: note-drift 3.6s ease-out infinite 1.3s; }
+
+  @keyframes note-drift {
+    0%   { opacity: 0; transform: translateY(0) translateX(0) rotate(0deg) scale(0.5); }
+    12%  { opacity: 1; transform: translateY(-12px) translateX(5px) rotate(-10deg) scale(1); }
+    35%  { opacity: 0.9; transform: translateY(-40px) translateX(-10px) rotate(15deg) scale(1); }
+    60%  { opacity: 0.5; transform: translateY(-80px) translateX(8px) rotate(-8deg) scale(0.85); }
+    85%  { opacity: 0.15; transform: translateY(-120px) translateX(-6px) rotate(12deg) scale(0.6); }
+    100% { opacity: 0; transform: translateY(-150px) translateX(4px) rotate(-15deg) scale(0.4); }
+  }
+
+  /* === L13: HEADPHONE SILHOUETTE (top) === */
+  .headphones {
+    position: absolute;
+    top: calc(50% - 145px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    font-size: 28px;
+    filter: drop-shadow(0 0 6px rgba(255,200,50,0.4)) drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+    animation: hp-bob 4s ease-in-out infinite;
+  }
+
+  @keyframes hp-bob {
+    0%, 100% { transform: translateX(-50%) translateY(0) rotate(-3deg); }
+    25%      { transform: translateX(-50%) translateY(-5px) rotate(1deg); }
+    50%      { transform: translateX(-50%) translateY(-2px) rotate(-1deg); }
+    75%      { transform: translateX(-50%) translateY(-7px) rotate(2deg); }
+  }
+
+  /* === L14: STUDIO GLOW === */
+  .studio-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    z-index: 3;
+    pointer-events: none;
+    animation: studio-glow-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes studio-glow-pulse {
+    0%, 100% {
+      box-shadow:
+        0 0 20px 5px rgba(255,200,50,0.15),
+        0 0 40px 10px rgba(255,100,50,0.08),
+        0 0 80px 20px rgba(200,50,50,0.04);
+    }
+    50% {
+      box-shadow:
+        0 0 30px 10px rgba(255,200,50,0.25),
+        0 0 55px 18px rgba(255,100,50,0.14),
+        0 0 100px 28px rgba(200,50,50,0.07);
+    }
+  }
+
+  /* === L15: PLATINUM TEXT RING === */
+  .plat-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    z-index: 5;
+    pointer-events: none;
+    animation: plat-spin 40s linear infinite;
+    opacity: 0.2;
+  }
+  .plat-ring svg { width: 100%; height: 100%; }
+
+  @keyframes plat-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L16: SPARKLE FLASHES === */
+  .mic-sparkle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 13;
+    width: 0;
+    height: 0;
+  }
+  .mic-sparkle::before,
+  .mic-sparkle::after {
+    content: "";
+    position: absolute;
+    background: #ffd700;
+    border-radius: 1px;
+  }
+  .mic-sparkle::before { width: 2px; height: 12px; top: -6px; left: -1px; }
+  .mic-sparkle::after  { width: 12px; height: 2px; top: -1px; left: -6px; }
+
+  .ms1 { top: calc(50% - 115px); left: calc(50% + 30px); animation: ms-flash 2.8s ease-in-out infinite 0s; }
+  .ms2 { top: calc(50% + 15px);  left: calc(50% + 120px);animation: ms-flash 3.2s ease-in-out infinite 0.5s; }
+  .ms3 { top: calc(50% + 105px); left: calc(50% - 20px); animation: ms-flash 2.4s ease-in-out infinite 1.0s; }
+  .ms4 { top: calc(50% - 10px);  left: calc(50% - 125px);animation: ms-flash 3.0s ease-in-out infinite 1.5s; }
+  .ms5 { top: calc(50% - 85px);  left: calc(50% - 90px); animation: ms-flash 2.6s ease-in-out infinite 0.3s; }
+  .ms6 { top: calc(50% + 85px);  left: calc(50% + 75px); animation: ms-flash 3.4s ease-in-out infinite 0.8s; }
+
+  @keyframes ms-flash {
+    0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+    20%      { opacity: 1; transform: scale(1.2) rotate(15deg); }
+    40%      { opacity: 0; transform: scale(0.5) rotate(30deg); }
+    60%      { opacity: 0.7; transform: scale(1) rotate(10deg); }
+    80%      { opacity: 0; transform: scale(0.4) rotate(25deg); }
+  }
+
+  /* === L17: BOTTOM STAGE REFLECTION === */
+  .stage-reflect {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%) scaleY(0.2) scaleX(0.65);
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(circle, rgba(255,200,50,0.12), rgba(255,100,50,0.06), transparent);
+    filter: blur(12px);
+    animation: stage-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes stage-glow {
+    0%, 100% { opacity: 0.3; }
+    50%      { opacity: 0.6; }
+  }
+
+  /* === L18: FLICKER === */
+  .studio-flicker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 245px;
+    height: 245px;
+    border-radius: 50%;
+    z-index: 8;
+    pointer-events: none;
+    animation: s-flick 0.2s steps(3) infinite;
+  }
+
+  @keyframes s-flick {
+    0%   { box-shadow: 0 0 5px 1px rgba(255,200,50,0.08); }
+    33%  { box-shadow: 0 0 0 0 transparent; }
+    66%  { box-shadow: 0 0 4px 1px rgba(255,100,50,0.06); }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+
+  <!-- RECORDING LIGHT -->
+  <div class="rec-light">
+    <div class="rec-dot"></div>
+    <span class="rec-text">REC</span>
+  </div>
+
+  <!-- HEADPHONES -->
+  <div class="headphones">🎧</div>
+
+  <!-- PHOTO -->
+  <div class="photo-slot"><span>Your<br>Photo<br>Here</span></div>
+
+  <!-- VINYL FRAME -->
+  <div class="vinyl-frame"></div>
+
+  <!-- GOLD PLATE -->
+  <div class="gold-plate"></div>
+  <div class="gold-sweep"></div>
+
+  <!-- NEEDLE ARM -->
+  <div class="needle-arm">
+    <div class="needle-arm-bar"></div>
+  </div>
+
+  <!-- CABLE RING -->
+  <div class="cable-ring">
+    <svg viewBox="0 0 268 268">
+      <defs>
+        <filter id="cable-shadow">
+          <feGaussianBlur stdDeviation="1" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <circle class="cable-path cp1" cx="134" cy="134" r="128"/>
+      <circle class="cable-path cp2" cx="134" cy="134" r="124"/>
+      <circle class="cable-path cp3" cx="134" cy="134" r="120"/>
+      <circle class="cable-stripe cs-red"  cx="134" cy="134" r="126"/>
+      <circle class="cable-stripe cs-blue" cx="134" cy="134" r="122"/>
+    </svg>
+  </div>
+
+  <!-- WAVEFORM VIS (radial bars) -->
+  <div class="waveform-vis">
+    <svg viewBox="0 0 256 256">
+      <!-- 24 bars arranged radially -->
+      <rect class="wave-bar wb1"  x="126" y="2"   width="4" height="14" rx="2" transform="rotate(0,128,128)"/>
+      <rect class="wave-bar wb2"  x="126" y="2"   width="4" height="14" rx="2" transform="rotate(15,128,128)"/>
+      <rect class="wave-bar wb3"  x="126" y="2"   width="4" height="14" rx="2" transform="rotate(30,128,128)"/>
+      <rect class="wave-bar wb4"  x="126" y="2"   width="4" height="14" rx="2" transform="rotate(45,128,128)"/>
+      <rect class="wave-bar wb5"  x="126" y="2"   width="4" height="14" rx="2" transform="rotate(60,128,128)"/>
+      <rect class="wave-bar wb6"  x="126" y="2"   width="4" height="14" rx="2" transform="rotate(75,128,128)"/>
+      <rect class="wave-bar wb7"  x="126" y="2"   width="4" height="14" rx="2" transform="rotate(90,128,128)"/>
+      <rect class="wave-bar wb8"  x="126" y="2"   width="4" height="14" rx="2" transform="rotate(105,128,128)"/>
+      <rect class="wave-bar wb9"  x="126" y="2"   width="4" height="14" rx="2" transform="rotate(120,128,128)"/>
+      <rect class="wave-bar wb10" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(135,128,128)"/>
+      <rect class="wave-bar wb11" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(150,128,128)"/>
+      <rect class="wave-bar wb12" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(165,128,128)"/>
+      <rect class="wave-bar wb13" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(180,128,128)"/>
+      <rect class="wave-bar wb14" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(195,128,128)"/>
+      <rect class="wave-bar wb15" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(210,128,128)"/>
+      <rect class="wave-bar wb16" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(225,128,128)"/>
+      <rect class="wave-bar wb17" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(240,128,128)"/>
+      <rect class="wave-bar wb18" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(255,128,128)"/>
+      <rect class="wave-bar wb19" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(270,128,128)"/>
+      <rect class="wave-bar wb20" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(285,128,128)"/>
+      <rect class="wave-bar wb21" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(300,128,128)"/>
+      <rect class="wave-bar wb22" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(315,128,128)"/>
+      <rect class="wave-bar wb23" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(330,128,128)"/>
+      <rect class="wave-bar wb24" x="126" y="2"   width="4" height="14" rx="2" transform="rotate(345,128,128)"/>
+    </svg>
+  </div>
+
+  <!-- SOUND WAVE PULSES -->
+  <div class="sound-wave sw1"></div>
+  <div class="sound-wave sw2"></div>
+  <div class="sound-wave sw3"></div>
+
+  <!-- ORBITING VINYL RECORDS -->
+  <div class="orbit-records">
+    <div class="orbit-record or1 rec-gold"><div class="mini-vinyl"><div class="vinyl-sheen"></div></div></div>
+    <div class="orbit-record or2 rec-red"><div class="mini-vinyl"><div class="vinyl-sheen"></div></div></div>
+    <div class="orbit-record or3 rec-blue"><div class="mini-vinyl"><div class="vinyl-sheen"></div></div></div>
+    <div class="orbit-record or4 rec-plat"><div class="mini-vinyl"><div class="vinyl-sheen"></div></div></div>
+    <div class="orbit-record or5 rec-green"><div class="mini-vinyl"><div class="vinyl-sheen"></div></div></div>
+    <div class="orbit-record or6 rec-gold"><div class="mini-vinyl"><div class="vinyl-sheen"></div></div></div>
+  </div>
+
+  <!-- FLOATING MICROPHONES -->
+  <div class="floating-mic mic1">🎤</div>
+  <div class="floating-mic mic2">🎙️</div>
+  <div class="floating-mic mic3">🎤</div>
+  <div class="floating-mic mic4">🎙️</div>
+  <div class="floating-mic mic5">🎤</div>
+  <div class="floating-mic mic6">🎙️</div>
+
+  <!-- FLOATING RECORDS -->
+  <div class="floating-rec fr1">💿</div>
+  <div class="floating-rec fr2">💿</div>
+  <div class="floating-rec fr3">💿</div>
+  <div class="floating-rec fr4">💿</div>
+  <div class="floating-rec fr5">💿</div>
+
+  <!-- FLOATING NOTES -->
+  <div class="float-note fn1">♪</div>
+  <div class="float-note fn2">♫</div>
+  <div class="float-note fn3">♬</div>
+  <div class="float-note fn4">♩</div>
+  <div class="float-note fn5">♪</div>
+  <div class="float-note fn6">♫</div>
+  <div class="float-note fn7">♬</div>
+  <div class="float-note fn8">♩</div>
+
+  <!-- PLATINUM TEXT RING -->
+  <div class="plat-ring">
+    <svg viewBox="0 0 300 300">
+      <defs><path id="plat-path" d="M150,15 a135,135 0 1,1 0,270 a135,135 0 1,1 0,-270"/></defs>
+      <text fill="rgba(255,215,0,0.5)" font-size="8" font-family="serif" letter-spacing="3" font-style="italic">
+        <textPath href="#plat-path">
+          ★ CERTIFIED PLATINUM ★ STUDIO LEGEND ★ CERTIFIED PLATINUM ★ STUDIO LEGEND ★
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <!-- SPARKLE FLASHES -->
+  <div class="mic-sparkle ms1"></div>
+  <div class="mic-sparkle ms2"></div>
+  <div class="mic-sparkle ms3"></div>
+  <div class="mic-sparkle ms4"></div>
+  <div class="mic-sparkle ms5"></div>
+  <div class="mic-sparkle ms6"></div>
+
+  <!-- STUDIO GLOW -->
+  <div class="studio-glow"></div>
+
+  <!-- STAGE REFLECTION -->
+  <div class="stage-reflect"></div>
+
+  <!-- FLICKER -->
+  <div class="studio-flicker"></div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🔥 HELLFIRE VORTEX</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0a0500;
+    overflow: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(2px 2px at 15% 25%, rgba(255,80,0,0.3), transparent),
+      radial-gradient(2px 2px at 75% 65%, rgba(255,40,0,0.25), transparent),
+      radial-gradient(1px 1px at 45% 80%, rgba(255,120,0,0.4), transparent),
+      radial-gradient(1px 1px at 85% 15%, rgba(255,60,0,0.3), transparent),
+      radial-gradient(2px 2px at 55% 40%, rgba(255,100,0,0.2), transparent),
+      radial-gradient(1px 1px at 25% 70%, rgba(255,150,0,0.35), transparent);
+    animation: ember-drift 18s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  @keyframes ember-drift {
+    0%   { transform: translateY(0) scale(1); opacity: 0.5; }
+    50%  { transform: translateY(-40px) scale(1.15); opacity: 1; }
+    100% { transform: translateY(15px) scale(1.05); opacity: 0.7; }
+  }
+
+  .frame-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    z-index: 1;
+  }
+
+  /* PHOTO PLACEHOLDER */
+  .photo-slot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: #1a1008;
+    z-index: 10;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .photo-slot span {
+    color: rgba(255,120,40,0.25);
+    font: bold 11px/1.3 sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* L1: DEEP INFERNO HAZE */
+  .inferno-haze {
+    position: absolute;
+    inset: -50px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    background: conic-gradient(
+      from 0deg,
+      rgba(200, 30, 0, 0)    0deg,
+      rgba(255, 80, 0, 0.5)  25deg,
+      rgba(200, 20, 0, 0)    55deg,
+      rgba(255, 140, 0, 0.4) 90deg,
+      rgba(180, 10, 0, 0)    130deg,
+      rgba(255, 60, 0, 0.6)  170deg,
+      rgba(200, 20, 0, 0)    210deg,
+      rgba(255, 100, 0, 0.5) 260deg,
+      rgba(180, 10, 0, 0)    300deg,
+      rgba(255, 80, 0, 0.4)  340deg,
+      rgba(200, 30, 0, 0)    360deg
+    );
+    filter: blur(30px);
+    animation: inferno-rotate 8s linear infinite, inferno-breathe 3s ease-in-out infinite;
+  }
+
+  @keyframes inferno-rotate { to { transform: rotate(-360deg); } }
+  @keyframes inferno-breathe {
+    0%, 100% { opacity: 0.6; }
+    50%      { opacity: 1; }
+  }
+
+  /* L2: FIRE VORTEX RING — fast spinning */
+  .vortex-ring {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 3;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      rgba(255, 200, 50, 1) 2deg,
+      rgba(255, 100, 0, 0.8) 5deg,
+      transparent 8deg,
+      transparent 24deg,
+      rgba(255, 60, 0, 1) 26deg,
+      rgba(255, 160, 30, 0.9) 29deg,
+      transparent 32deg,
+      transparent 50deg,
+      rgba(255, 220, 80, 1) 52deg,
+      rgba(255, 80, 0, 0.7) 55deg,
+      transparent 58deg,
+      transparent 78deg,
+      rgba(255, 120, 0, 1) 80deg,
+      transparent 84deg,
+      transparent 105deg,
+      rgba(255, 180, 40, 0.9) 107deg,
+      transparent 111deg,
+      transparent 130deg,
+      rgba(255, 60, 0, 1) 132deg,
+      transparent 136deg,
+      transparent 160deg,
+      rgba(255, 200, 60, 0.8) 162deg,
+      transparent 166deg,
+      transparent 190deg,
+      rgba(255, 100, 0, 1) 192deg,
+      transparent 196deg,
+      transparent 215deg,
+      rgba(255, 220, 80, 0.9) 217deg,
+      transparent 221deg,
+      transparent 245deg,
+      rgba(255, 70, 0, 1) 247deg,
+      transparent 251deg,
+      transparent 275deg,
+      rgba(255, 160, 20, 0.8) 277deg,
+      transparent 281deg,
+      transparent 305deg,
+      rgba(255, 200, 50, 1) 307deg,
+      transparent 311deg,
+      transparent 335deg,
+      rgba(255, 90, 0, 0.9) 337deg,
+      transparent 341deg
+    );
+    filter: blur(2px);
+    animation: vortex-spin 1.2s linear infinite;
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 5px), #000 calc(100% - 2px), transparent 100%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 5px), #000 calc(100% - 2px), transparent 100%);
+  }
+
+  @keyframes vortex-spin { to { transform: rotate(360deg); } }
+
+  /* L3: COUNTER-ROTATING MAGMA BAND */
+  .magma-band {
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 4;
+    background: conic-gradient(
+      from 0deg,
+      rgba(255, 80, 0, 0) 0deg,
+      rgba(255, 120, 20, 0.8) 20deg,
+      rgba(200, 30, 0, 1) 40deg,
+      rgba(255, 120, 20, 0.8) 60deg,
+      rgba(255, 80, 0, 0) 80deg,
+      rgba(255, 80, 0, 0) 160deg,
+      rgba(255, 180, 50, 0.8) 180deg,
+      rgba(220, 40, 0, 1) 200deg,
+      rgba(255, 180, 50, 0.8) 220deg,
+      rgba(255, 80, 0, 0) 240deg
+    );
+    filter: blur(5px);
+    animation: magma-counter 2.5s linear infinite reverse;
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 14px), #000 calc(100% - 9px), #000 calc(100% - 4px), transparent 100%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 14px), #000 calc(100% - 9px), #000 calc(100% - 4px), transparent 100%);
+  }
+
+  @keyframes magma-counter { to { transform: rotate(360deg); } }
+
+  /* L4: MOLTEN GLASS RING */
+  .molten-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5;
+    border: 2.5px solid rgba(255, 120, 20, 0.6);
+    animation: molten-shimmer 2s ease-in-out infinite;
+  }
+
+  @keyframes molten-shimmer {
+    0%, 100% { border-color: rgba(255,120,20,0.6); box-shadow: 0 0 8px rgba(255,80,0,0.4), inset 0 0 8px rgba(255,80,0,0.2); }
+    33%      { border-color: rgba(255,200,60,0.9); box-shadow: 0 0 16px rgba(255,150,0,0.7), inset 0 0 12px rgba(255,150,0,0.3); }
+    66%      { border-color: rgba(200,40,0,0.8); box-shadow: 0 0 10px rgba(200,40,0,0.5), inset 0 0 8px rgba(200,40,0,0.2); }
+  }
+
+  /* L5: OUTER GLOW */
+  .outer-glow {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 2;
+    animation: fire-glow 1.8s ease-in-out infinite;
+  }
+
+  @keyframes fire-glow {
+    0%, 100% { box-shadow: 0 0 25px 6px rgba(255,60,0,0.35), 0 0 50px 12px rgba(255,40,0,0.15), 0 0 90px 20px rgba(200,20,0,0.08); }
+    50%      { box-shadow: 0 0 35px 10px rgba(255,100,0,0.55), 0 0 70px 20px rgba(255,60,0,0.28), 0 0 120px 30px rgba(220,30,0,0.14); }
+  }
+
+  /* L6: SVG FLAME TENDRILS */
+  .tendrils {
+    position: absolute;
+    inset: -40px;
+    z-index: 2;
+    pointer-events: none;
+    animation: tendril-rotate 12s linear infinite;
+  }
+  .tendrils svg { width: 100%; height: 100%; overflow: visible; }
+
+  @keyframes tendril-rotate { to { transform: rotate(360deg); } }
+
+  .tendril-path { fill: none; stroke-width: 2; stroke-linecap: round; filter: url(#fire-glow-filter); }
+  .t1 { stroke: rgba(255,180,40,0.9); stroke-dasharray: 10 22 5 28; animation: df1 1.5s linear infinite; }
+  .t2 { stroke: rgba(255,80,0,0.8); stroke-dasharray: 14 18 7 22; animation: df2 2s linear infinite; }
+  .t3 { stroke: rgba(255,220,80,0.7); stroke-dasharray: 6 28 12 18; animation: df3 2.5s linear infinite; }
+  .t4 { stroke: rgba(220,40,0,0.9); stroke-dasharray: 12 20 4 25; animation: df4 1.3s linear infinite; }
+  .t5 { stroke: rgba(255,140,20,0.8); stroke-dasharray: 8 24 9 20; animation: df5 1.8s linear infinite; }
+  .t6 { stroke: rgba(255,200,60,0.6); stroke-dasharray: 16 12 6 28; animation: df6 2.8s linear infinite; }
+  .t7 { stroke: rgba(255,100,0,0.85); stroke-dasharray: 9 19 7 26; animation: df7 1.6s linear infinite; }
+  .t8 { stroke: rgba(255,160,30,0.75); stroke-dasharray: 11 16 8 24; animation: df8 2.2s linear infinite; }
+
+  @keyframes df1 { to { stroke-dashoffset: -90; } }
+  @keyframes df2 { to { stroke-dashoffset: -110; } }
+  @keyframes df3 { to { stroke-dashoffset: -75; } }
+  @keyframes df4 { to { stroke-dashoffset: -100; } }
+  @keyframes df5 { to { stroke-dashoffset: -85; } }
+  @keyframes df6 { to { stroke-dashoffset: -120; } }
+  @keyframes df7 { to { stroke-dashoffset: -95; } }
+  @keyframes df8 { to { stroke-dashoffset: -105; } }
+
+  /* L7: ORBITING FIRE NODES */
+  .orbit-nodes {
+    position: absolute;
+    inset: -28px;
+    z-index: 6;
+    pointer-events: none;
+    animation: nodes-orbit 6s linear infinite;
+  }
+  .orbit-nodes svg { width: 100%; height: 100%; }
+
+  @keyframes nodes-orbit { to { transform: rotate(360deg); } }
+
+  .fn1 { animation: fp1 1.2s ease-in-out infinite; }
+  .fn2 { animation: fp2 1.6s ease-in-out infinite; }
+  .fn3 { animation: fp3 1.0s ease-in-out infinite; }
+  .fn4 { animation: fp4 1.4s ease-in-out infinite; }
+  .fn5 { animation: fp5 1.8s ease-in-out infinite; }
+  .fn6 { animation: fp6 1.1s ease-in-out infinite; }
+
+  @keyframes fp1 { 0%,100% { r: 3; opacity: 0.5; } 50% { r: 7; opacity: 1; } }
+  @keyframes fp2 { 0%,100% { r: 4; opacity: 0.6; } 50% { r: 8; opacity: 1; } }
+  @keyframes fp3 { 0%,100% { r: 2; opacity: 0.4; } 50% { r: 6; opacity: 1; } }
+  @keyframes fp4 { 0%,100% { r: 3; opacity: 0.7; } 50% { r: 7; opacity: 1; } }
+  @keyframes fp5 { 0%,100% { r: 3; opacity: 0.5; } 50% { r: 6; opacity: 1; } }
+  @keyframes fp6 { 0%,100% { r: 2; opacity: 0.6; } 50% { r: 5; opacity: 1; } }
+
+  /* L8: RISING EMBERS */
+  .ember {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 7;
+  }
+  .e1  { width: 4px; height: 4px; bottom: -5px; left: 20%; background: #ff8c00; animation: rise 2.0s ease-out infinite 0s; }
+  .e2  { width: 3px; height: 3px; bottom: -8px; left: 45%; background: #ff5500; animation: rise 2.5s ease-out infinite 0.3s; }
+  .e3  { width: 5px; height: 5px; bottom: 0px; left: 70%; background: #ffaa00; animation: rise 1.8s ease-out infinite 0.6s; }
+  .e4  { width: 3px; height: 3px; bottom: -3px; left: 85%; background: #ff3300; animation: rise 2.2s ease-out infinite 0.9s; }
+  .e5  { width: 4px; height: 4px; bottom: -6px; left: 10%; background: #ff6600; animation: rise 2.8s ease-out infinite 0.2s; }
+  .e6  { width: 2px; height: 2px; bottom: -4px; left: 55%; background: #ffcc00; animation: rise 1.6s ease-out infinite 0.5s; }
+  .e7  { width: 3px; height: 3px; bottom: 5px; left: 35%; background: #ff4400; animation: rise 2.4s ease-out infinite 0.8s; }
+  .e8  { width: 4px; height: 4px; bottom: -2px; left: 90%; background: #ff7700; animation: rise 2.1s ease-out infinite 1.1s; }
+  .e9  { width: 2px; height: 2px; bottom: -7px; left: 5%;  background: #ffbb00; animation: rise 3.0s ease-out infinite 0.4s; }
+  .e10 { width: 3px; height: 3px; bottom: 2px; left: 60%; background: #ff2200; animation: rise 1.9s ease-out infinite 0.7s; }
+  .e11 { width: 5px; height: 5px; bottom: -10px; left: 30%; background: #ff9900; animation: rise 2.6s ease-out infinite 1.0s; }
+  .e12 { width: 2px; height: 2px; bottom: 0px; left: 78%; background: #ffdd00; animation: rise 1.7s ease-out infinite 0.1s; }
+  .e13 { width: 3px; height: 3px; bottom: -5px; left: 50%; background: #ff5500; animation: rise 2.3s ease-out infinite 1.3s; }
+  .e14 { width: 4px; height: 4px; bottom: -8px; left: 15%; background: #ff8800; animation: rise 2.0s ease-out infinite 0.6s; }
+  .e15 { width: 2px; height: 2px; bottom: 3px;  left: 42%; background: #ff3300; animation: rise 2.7s ease-out infinite 0.9s; }
+  .e16 { width: 3px; height: 3px; bottom: -1px; left: 95%; background: #ffaa33; animation: rise 1.5s ease-out infinite 1.2s; }
+
+  @keyframes rise {
+    0%   { opacity: 1; transform: translateY(0) translateX(0) scale(1); }
+    30%  { opacity: 0.9; }
+    60%  { opacity: 0.5; transform: translateY(-80px) translateX(15px) scale(0.7); }
+    100% { opacity: 0; transform: translateY(-160px) translateX(-10px) scale(0.2); }
+  }
+
+  /* L9: RUNE RING */
+  .rune-ring {
+    position: absolute;
+    inset: -32px;
+    z-index: 5;
+    pointer-events: none;
+    animation: rune-spin 30s linear infinite;
+    opacity: 0.3;
+  }
+  .rune-ring svg { width: 100%; height: 100%; }
+
+  @keyframes rune-spin { to { transform: rotate(360deg); } }
+
+  /* L10: FLICKER */
+  .flicker {
+    position: absolute;
+    inset: -16px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 8;
+    animation: flick 0.12s steps(2) infinite;
+  }
+
+  @keyframes flick {
+    0%  { box-shadow: 0 0 5px 2px rgba(255,100,0,0.2); }
+    25% { box-shadow: 0 0 0 0 transparent; }
+    50% { box-shadow: 0 0 8px 3px rgba(255,60,0,0.25); }
+    75% { box-shadow: 0 0 0 0 transparent; }
+  }
+
+  /* L11: HEAT DISTORTION — subtle scale wobble on whole container */
+  .frame-container {
+    animation: heat-warp 4s ease-in-out infinite;
+  }
+
+  @keyframes heat-warp {
+    0%, 100% { filter: none; }
+    25%      { filter: blur(0.3px); }
+    50%      { filter: none; }
+    75%      { filter: blur(0.2px); }
+  }
+</style>
+</head>
+<body>
+
+<div class="frame-container">
+
+  <div class="photo-slot">
+    <span>Your<br>Photo<br>Here</span>
+  </div>
+
+  <div class="inferno-haze"></div>
+
+  <div class="tendrils">
+    <svg viewBox="0 0 360 360">
+      <defs>
+        <filter id="fire-glow-filter">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <path class="tendril-path t1" d="M180,10 Q240,0 280,45 Q310,85 318,145"/>
+      <path class="tendril-path t2" d="M320,180 Q335,240 295,295 Q265,325 210,340"/>
+      <path class="tendril-path t3" d="M180,345 Q120,355 65,310 Q30,275 18,215"/>
+      <path class="tendril-path t4" d="M15,165 Q5,105 40,55 Q75,15 135,5"/>
+      <path class="tendril-path t5" d="M215,8 Q300,30 340,120 Q350,175 325,230"/>
+      <path class="tendril-path t6" d="M140,348 Q55,315 15,230 Q0,170 22,105"/>
+      <path class="tendril-path t7" d="M250,18 Q310,55 340,140 Q348,200 310,270"/>
+      <path class="tendril-path t8" d="M110,350 Q40,310 10,220 Q2,150 35,80"/>
+    </svg>
+  </div>
+
+  <div class="vortex-ring"></div>
+  <div class="magma-band"></div>
+  <div class="molten-ring"></div>
+  <div class="outer-glow"></div>
+
+  <div class="orbit-nodes">
+    <svg viewBox="0 0 336 336">
+      <circle class="fn1" cx="168" cy="8"   r="3" fill="#ffaa00" filter="url(#fire-glow-filter)"/>
+      <circle class="fn2" cx="310" cy="100" r="4" fill="#ff5500" filter="url(#fire-glow-filter)"/>
+      <circle class="fn3" cx="320" cy="220" r="3" fill="#ffcc33" filter="url(#fire-glow-filter)"/>
+      <circle class="fn4" cx="168" cy="328" r="3" fill="#ff3300" filter="url(#fire-glow-filter)"/>
+      <circle class="fn5" cx="20"  cy="220" r="3" fill="#ff8800" filter="url(#fire-glow-filter)"/>
+      <circle class="fn6" cx="28"  cy="100" r="2" fill="#ffdd00" filter="url(#fire-glow-filter)"/>
+    </svg>
+  </div>
+
+  <div class="rune-ring">
+    <svg viewBox="0 0 344 344">
+      <defs><path id="rune-path-fire" d="M172,18 a154,154 0 1,1 0,308 a154,154 0 1,1 0,-308"/></defs>
+      <text fill="rgba(255,140,40,0.7)" font-size="10" font-family="monospace" letter-spacing="3">
+        <textPath href="#rune-path-fire">🔥 ✦ ◈ ⬡ 🜂 ✦ ◈ ⬡ 🔥 ✦ ◈ ⬡ 🜂 ✦ ◈ ⬡ 🔥 ✦ ◈ ⬡ 🜂 ✦ ◈ ⬡ 🔥 ✦</textPath>
+      </text>
+    </svg>
+  </div>
+
+  <div class="ember e1"></div><div class="ember e2"></div><div class="ember e3"></div>
+  <div class="ember e4"></div><div class="ember e5"></div><div class="ember e6"></div>
+  <div class="ember e7"></div><div class="ember e8"></div><div class="ember e9"></div>
+  <div class="ember e10"></div><div class="ember e11"></div><div class="ember e12"></div>
+  <div class="ember e13"></div><div class="ember e14"></div><div class="ember e15"></div>
+  <div class="ember e16"></div>
+
+  <div class="flicker"></div>
+</div>
+
+</body>
+</html>
