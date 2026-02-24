@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>👑 FOUNDER</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #080604;
+    overflow: hidden;
+  }
+
+  /* === AMBIENT GOLD DUST FIELD === */
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  body::before {
+    background:
+      radial-gradient(1px 1px at 5% 12%, rgba(255,215,100,0.5), transparent),
+      radial-gradient(1px 1px at 14% 48%, rgba(255,200,80,0.3), transparent),
+      radial-gradient(1px 1px at 24% 78%, rgba(255,230,150,0.4), transparent),
+      radial-gradient(1px 1px at 36% 22%, rgba(255,210,100,0.25), transparent),
+      radial-gradient(1px 1px at 46% 58%, rgba(255,240,180,0.35), transparent),
+      radial-gradient(1px 1px at 56% 34%, rgba(255,200,60,0.4), transparent),
+      radial-gradient(1px 1px at 66% 72%, rgba(255,220,120,0.25), transparent),
+      radial-gradient(1px 1px at 76% 18%, rgba(255,215,100,0.5), transparent),
+      radial-gradient(1px 1px at 86% 52%, rgba(255,190,60,0.3), transparent),
+      radial-gradient(1px 1px at 96% 88%, rgba(255,230,140,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 11% 68%, rgba(255,200,80,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 32% 32%, rgba(255,220,120,0.3), transparent),
+      radial-gradient(1.5px 1.5px at 52% 92%, rgba(255,240,180,0.25), transparent),
+      radial-gradient(1.5px 1.5px at 72% 48%, rgba(255,210,90,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 92% 28%, rgba(255,200,70,0.35), transparent);
+    animation: dust-twinkle 4s ease-in-out infinite alternate;
+  }
+
+  body::after {
+    background:
+      radial-gradient(1px 1px at 9% 56%, rgba(255,215,100,0.4), transparent),
+      radial-gradient(1px 1px at 19% 82%, rgba(255,180,50,0.25), transparent),
+      radial-gradient(1px 1px at 29% 18%, rgba(255,220,120,0.35), transparent),
+      radial-gradient(1px 1px at 39% 62%, rgba(255,200,80,0.4), transparent),
+      radial-gradient(1px 1px at 49% 28%, rgba(255,240,160,0.25), transparent),
+      radial-gradient(1px 1px at 59% 78%, rgba(255,210,90,0.35), transparent),
+      radial-gradient(1px 1px at 69% 42%, rgba(255,225,130,0.5), transparent),
+      radial-gradient(1px 1px at 79% 68%, rgba(255,195,60,0.25), transparent),
+      radial-gradient(1px 1px at 89% 14%, rgba(255,215,100,0.4), transparent),
+      radial-gradient(1px 1px at 99% 48%, rgba(255,200,70,0.3), transparent);
+    animation: dust-twinkle 5s ease-in-out infinite alternate-reverse;
+  }
+
+  @keyframes dust-twinkle {
+    0%   { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+
+  .stage {
+    position: relative;
+    width: 400px;
+    height: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* === PHOTO SLOT === */
+  .photo-slot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #0c0a06;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .photo-slot span {
+    color: rgba(255,200,80,0.12);
+    font: bold 11px/1.3 sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* === L1: INNER GILDED RING === */
+  .gilded-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 198px;
+    height: 198px;
+    border-radius: 50%;
+    z-index: 9;
+    pointer-events: none;
+    box-shadow:
+      inset 0 0 0 2px rgba(255,200,80,0.4),
+      inset 0 0 8px rgba(255,180,50,0.2),
+      0 0 0 2px rgba(255,200,80,0.3),
+      0 0 10px rgba(255,180,50,0.15);
+    animation: gilt-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes gilt-pulse {
+    0%, 100% {
+      box-shadow:
+        inset 0 0 0 2px rgba(255,200,80,0.4),
+        inset 0 0 8px rgba(255,180,50,0.2),
+        0 0 0 2px rgba(255,200,80,0.3),
+        0 0 10px rgba(255,180,50,0.15);
+    }
+    50% {
+      box-shadow:
+        inset 0 0 0 2.5px rgba(255,220,120,0.6),
+        inset 0 0 14px rgba(255,200,80,0.35),
+        0 0 0 3px rgba(255,210,100,0.45),
+        0 0 20px rgba(255,200,80,0.3);
+    }
+  }
+
+  /* === L2: MOLTEN GOLD AURA === */
+  .gold-aura {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    background: conic-gradient(
+      from 0deg,
+      rgba(120,80,0,0) 0deg,
+      rgba(200,150,30,0.4) 25deg,
+      rgba(100,60,0,0) 50deg,
+      rgba(220,170,40,0.3) 80deg,
+      rgba(80,50,0,0) 110deg,
+      rgba(180,130,20,0.4) 140deg,
+      rgba(60,40,0,0) 170deg,
+      rgba(210,160,30,0.35) 200deg,
+      rgba(100,70,0,0) 230deg,
+      rgba(190,140,25,0.3) 260deg,
+      rgba(70,50,0,0) 290deg,
+      rgba(200,150,30,0.4) 320deg,
+      rgba(120,80,0,0) 360deg
+    );
+    filter: blur(25px);
+    animation: aura-swirl 15s linear infinite, aura-breathe 6s ease-in-out infinite;
+  }
+
+  @keyframes aura-swirl { to { transform: translate(-50%,-50%) rotate(360deg); } }
+  @keyframes aura-breathe {
+    0%, 100% { opacity: 0.5; }
+    50%      { opacity: 0.9; }
+  }
+
+  .gold-aura-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    background: conic-gradient(
+      from 90deg,
+      rgba(100,60,0,0) 0deg,
+      rgba(180,120,10,0.35) 40deg,
+      rgba(80,50,0,0) 80deg,
+      rgba(160,100,10,0.3) 130deg,
+      rgba(60,40,0,0) 180deg,
+      rgba(200,140,20,0.4) 230deg,
+      rgba(70,45,0,0) 280deg,
+      rgba(170,110,15,0.3) 330deg,
+      rgba(100,60,0,0) 360deg
+    );
+    filter: blur(20px);
+    animation: aura-swirl-2 20s linear infinite reverse;
+    opacity: 0.6;
+  }
+
+  @keyframes aura-swirl-2 { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L3: ORNAMENTAL RING SYSTEM === */
+  .ornament-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(65deg);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    z-index: 6;
+    pointer-events: none;
+    border: 2px solid rgba(255,200,80,0.18);
+    box-shadow:
+      0 0 0 4px rgba(200,160,50,0.06),
+      0 0 0 8px rgba(180,140,40,0.04),
+      0 0 0 12px rgba(160,120,30,0.02);
+    animation: orn-rotate 10s linear infinite;
+  }
+
+  @keyframes orn-rotate { to { transform: translate(-50%,-50%) rotateX(65deg) rotate(360deg); } }
+
+  .ornament-ring-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(65deg);
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    z-index: 5;
+    pointer-events: none;
+    border: 1px solid rgba(255,210,100,0.1);
+    box-shadow: 0 0 0 3px rgba(200,160,50,0.04);
+    animation: orn-rotate-2 14s linear infinite reverse;
+  }
+
+  @keyframes orn-rotate-2 { to { transform: translate(-50%,-50%) rotateX(65deg) rotate(360deg); } }
+
+  /* === L4: FILIGREE HUD RING === */
+  .filigree-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 224px;
+    height: 224px;
+    z-index: 7;
+    pointer-events: none;
+    animation: fil-spin 8s linear infinite;
+  }
+  .filigree-ring svg { width: 100%; height: 100%; overflow: visible; }
+
+  @keyframes fil-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .fil-seg {
+    fill: none;
+    stroke: rgba(255,200,80,0.4);
+    stroke-width: 2;
+    stroke-linecap: butt;
+    stroke-dasharray: 15 8 6 12;
+  }
+
+  .fil-seg-bright {
+    fill: none;
+    stroke: rgba(255,225,130,0.7);
+    stroke-width: 1.5;
+    stroke-linecap: butt;
+    stroke-dasharray: 4 30;
+    animation: fil-blink 1.5s steps(1) infinite;
+  }
+
+  @keyframes fil-blink {
+    0%, 60%  { stroke: rgba(255,225,130,0.7); }
+    30%      { stroke: rgba(255,255,200,0.9); }
+  }
+
+  /* === L5: OUTER FILIGREE RING === */
+  .filigree-outer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    z-index: 6;
+    pointer-events: none;
+    animation: fil-outer-spin 12s linear infinite reverse;
+  }
+  .filigree-outer svg { width: 100%; height: 100%; overflow: visible; }
+
+  @keyframes fil-outer-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .fil-outer-seg {
+    fill: none;
+    stroke: rgba(255,190,60,0.25);
+    stroke-width: 1.5;
+    stroke-dasharray: 20 10 5 15;
+  }
+
+  /* === L6: ORBITING CROWNS / GEMS === */
+  .crown-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 340px;
+    height: 340px;
+    z-index: 13;
+    pointer-events: none;
+  }
+
+  .crown-orbit-1 { animation: crown-spin 10s linear infinite; }
+  .crown-orbit-2 { animation: crown-spin 14s linear infinite reverse; }
+  .crown-orbit-3 { animation: crown-spin 8s linear infinite; }
+
+  @keyframes crown-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .gem-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+
+  .gc1 { margin: -10px 0 0 -10px; transform: rotate(0deg)   translateX(170px); }
+  .gc2 { margin: -10px 0 0 -10px; transform: rotate(180deg) translateX(170px); }
+  .gc3 { margin: -10px 0 0 -10px; transform: rotate(60deg)  translateX(155px); }
+  .gc4 { margin: -10px 0 0 -10px; transform: rotate(240deg) translateX(155px); }
+  .gc5 { margin: -10px 0 0 -10px; transform: rotate(30deg)  translateX(185px); }
+
+  /* GEMS BUILT WITH CSS */
+  .gem {
+    width: 20px;
+    height: 20px;
+    position: relative;
+  }
+
+  /* Diamond gem */
+  .gem-diamond .gem-top {
+    position: absolute;
+    width: 14px;
+    height: 8px;
+    background: linear-gradient(180deg, #ffe680, #daa520, #b8860b);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    top: 0px;
+    left: 3px;
+    filter: drop-shadow(0 0 3px rgba(255,200,60,0.5));
+  }
+  .gem-diamond .gem-bottom {
+    position: absolute;
+    width: 14px;
+    height: 10px;
+    background: linear-gradient(180deg, #daa520, #cd853f, #8b6914);
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    top: 8px;
+    left: 3px;
+  }
+  .gem-diamond .gem-shine {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255,255,220,0.8);
+    border-radius: 50%;
+    top: 4px;
+    left: 7px;
+    animation: gem-sparkle 2s ease-in-out infinite;
+    filter: blur(1px);
+  }
+
+  @keyframes gem-sparkle {
+    0%, 100% { opacity: 0.4; transform: scale(0.8); }
+    50%      { opacity: 1; transform: scale(1.3); }
+  }
+
+  /* Star gem */
+  .gem-star .gem-core {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 40% 40%, #ffe680, #daa520);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    top: 4px;
+    left: 4px;
+    filter: drop-shadow(0 0 4px rgba(255,200,60,0.6));
+    animation: star-rotate 4s linear infinite;
+  }
+
+  @keyframes star-rotate { to { transform: rotate(360deg); } }
+
+  /* Shield gem */
+  .gem-shield .gem-body {
+    position: absolute;
+    width: 14px;
+    height: 16px;
+    background: linear-gradient(180deg, #ffe680, #daa520, #b8860b);
+    clip-path: polygon(50% 0%, 100% 15%, 100% 60%, 50% 100%, 0% 60%, 0% 15%);
+    top: 2px;
+    left: 3px;
+    filter: drop-shadow(0 0 3px rgba(255,200,60,0.4));
+  }
+  .gem-shield .gem-inner {
+    position: absolute;
+    width: 8px;
+    height: 10px;
+    background: linear-gradient(180deg, rgba(255,240,180,0.6), rgba(218,165,32,0.3));
+    clip-path: polygon(50% 0%, 100% 15%, 100% 60%, 50% 100%, 0% 60%, 0% 15%);
+    top: 5px;
+    left: 6px;
+  }
+
+  /* === L7: RADIANT LIGHT RAYS === */
+  .light-rays {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .light-rays svg { width: 100%; height: 100%; overflow: visible; }
+
+  .ray {
+    fill: none;
+    stroke-linecap: round;
+    stroke-width: 1;
+  }
+  .rl1  { stroke: rgba(255,210,100,0.4); stroke-dasharray: 20 60; animation: ray-dash 1.5s linear infinite 0s; }
+  .rl2  { stroke: rgba(255,220,120,0.3); stroke-dasharray: 15 70; animation: ray-dash 2.0s linear infinite 0.2s; }
+  .rl3  { stroke: rgba(255,200,80,0.5);  stroke-dasharray: 25 50; animation: ray-dash 1.2s linear infinite 0.4s; }
+  .rl4  { stroke: rgba(255,210,100,0.25);stroke-dasharray: 12 75; animation: ray-dash 2.5s linear infinite 0.6s; }
+  .rl5  { stroke: rgba(255,230,140,0.4); stroke-dasharray: 18 65; animation: ray-dash 1.8s linear infinite 0.8s; }
+  .rl6  { stroke: rgba(255,200,80,0.35); stroke-dasharray: 22 55; animation: ray-dash 1.4s linear infinite 1.0s; }
+  .rl7  { stroke: rgba(255,220,110,0.4); stroke-dasharray: 14 68; animation: ray-dash 2.2s linear infinite 0.3s; }
+  .rl8  { stroke: rgba(255,210,90,0.25); stroke-dasharray: 28 45; animation: ray-dash 1.6s linear infinite 0.5s; }
+  .rl9  { stroke: rgba(255,190,70,0.5);  stroke-dasharray: 10 80; animation: ray-dash 2.8s linear infinite 0.7s; }
+  .rl10 { stroke: rgba(255,200,80,0.35); stroke-dasharray: 16 62; animation: ray-dash 1.3s linear infinite 0.9s; }
+  .rl11 { stroke: rgba(255,220,120,0.3); stroke-dasharray: 20 58; animation: ray-dash 1.9s linear infinite 0.1s; }
+  .rl12 { stroke: rgba(255,210,100,0.45);stroke-dasharray: 24 52; animation: ray-dash 1.1s linear infinite 1.1s; }
+
+  @keyframes ray-dash { to { stroke-dashoffset: -100; } }
+
+  /* === L8: ORBITING LAUREL ELEMENTS === */
+  .laurel-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 310px;
+    height: 310px;
+    z-index: 11;
+    pointer-events: none;
+    animation: laurel-spin 20s linear infinite;
+  }
+
+  @keyframes laurel-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .laurel-leaf {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+  }
+
+  .leaf-1 {
+    margin: -6px 0 0 -6px;
+    transform: rotate(0deg) translateX(155px);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 35% 35%, #ffe680, #daa520, #8b6914);
+    box-shadow: 0 0 6px rgba(255,200,60,0.5);
+  }
+  .leaf-2 {
+    margin: -5px 0 0 -5px;
+    transform: rotate(120deg) translateX(155px);
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle at 35% 35%, #ffd700, #b8860b, #705000);
+    box-shadow: 0 0 5px rgba(255,190,40,0.4);
+  }
+  .leaf-3 {
+    margin: -4px 0 0 -4px;
+    transform: rotate(220deg) translateX(155px);
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle at 35% 35%, #ffe080, #cd9b1d, #8b6914);
+    box-shadow: 0 0 4px rgba(255,200,60,0.35);
+  }
+
+  .leaf-1::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotateX(70deg);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,200,80,0.3);
+  }
+
+  /* === L9: FLOATING GOLD PARTICLES === */
+  .gold-particle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 12;
+    opacity: 0;
+  }
+
+  .gp1 { top: 18%; left: -2%;  animation: gp-float 5.0s ease-out infinite 0s; }
+  .gp2 { top: 42%; right: -4%; animation: gp-float 5.5s ease-out infinite 0.8s; }
+  .gp3 { top: 72%; left: -5%;  animation: gp-float 4.5s ease-out infinite 1.6s; }
+  .gp4 { top: 30%; left: -3%;  animation: gp-float 6.0s ease-out infinite 0.4s; }
+  .gp5 { top: 58%; right: -3%; animation: gp-float 4.8s ease-out infinite 1.2s; }
+  .gp6 { top: 82%; right: -5%; animation: gp-float 5.2s ease-out infinite 2.0s; }
+
+  .gp-shard {
+    width: 10px;
+    height: 8px;
+    background: linear-gradient(135deg, #ffe680, #daa520, #b8860b);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 90% 70%, 100% 100%, 40% 90%, 0% 70%, 10% 30%);
+    position: relative;
+    filter: drop-shadow(0 0 2px rgba(255,200,60,0.5));
+  }
+  .gp-shard::before {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #ffe680;
+    border-radius: 50%;
+    top: 2px;
+    left: 4px;
+  }
+
+  .gp2 .gp-shard, .gp5 .gp-shard { width: 7px; height: 6px; }
+  .gp4 .gp-shard, .gp6 .gp-shard { width: 13px; height: 10px; }
+
+  @keyframes gp-float {
+    0%   { opacity: 0; transform: translateY(0) translateX(0) rotate(0deg); }
+    10%  { opacity: 0.9; transform: translateY(-8px) translateX(5px) rotate(20deg); }
+    40%  { opacity: 0.7; transform: translateY(-40px) translateX(-10px) rotate(80deg); }
+    70%  { opacity: 0.3; transform: translateY(-80px) translateX(8px) rotate(160deg); }
+    100% { opacity: 0; transform: translateY(-130px) translateX(-5px) rotate(240deg); }
+  }
+
+  /* === L10: SPARKLE TRAILS === */
+  .sparkle-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360px;
+    height: 360px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ffe680;
+  }
+
+  .sparkle::after {
+    content: "";
+    position: absolute;
+    top: 1.5px;
+    right: 5px;
+    width: 25px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255,220,120,0.6), transparent);
+    border-radius: 1px;
+  }
+
+  .sparkle-1 {
+    top: 20%;
+    left: -10%;
+    animation: sparkle-fly 4s linear infinite 0s;
+  }
+  .sparkle-2 {
+    top: 60%;
+    left: -10%;
+    animation: sparkle-fly 5s linear infinite 2s;
+  }
+  .sparkle-3 {
+    top: 40%;
+    left: -10%;
+    animation: sparkle-fly 3.5s linear infinite 3.5s;
+  }
+
+  @keyframes sparkle-fly {
+    0%   { transform: translateX(0) translateY(0); opacity: 0; }
+    5%   { opacity: 1; }
+    80%  { opacity: 0.6; }
+    100% { transform: translateX(400px) translateY(-30px); opacity: 0; }
+  }
+
+  /* === L11: GOLDEN GLOW === */
+  .golden-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+    animation: gold-glow-pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes gold-glow-pulse {
+    0%, 100% {
+      box-shadow:
+        0 0 20px 5px rgba(200,160,40,0.18),
+        0 0 40px 10px rgba(180,130,20,0.1),
+        0 0 80px 20px rgba(150,100,10,0.05);
+    }
+    50% {
+      box-shadow:
+        0 0 30px 8px rgba(220,180,60,0.3),
+        0 0 55px 16px rgba(200,150,40,0.18),
+        0 0 100px 28px rgba(170,120,20,0.09);
+    }
+  }
+
+  /* === L12: INSCRIPTION RING === */
+  .inscription-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 330px;
+    height: 330px;
+    z-index: 4;
+    pointer-events: none;
+    animation: insc-spin 50s linear infinite;
+    opacity: 0.25;
+  }
+  .inscription-ring svg { width: 100%; height: 100%; }
+
+  @keyframes insc-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L13: GOLDEN SCANNER === */
+  .gold-scan {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    z-index: 7;
+    pointer-events: none;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 350deg,
+      rgba(255,200,80,0) 352deg,
+      rgba(255,200,80,0.18) 356deg,
+      rgba(255,200,80,0.05) 360deg
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent 60%, #000 70%, #000 100%);
+    mask: radial-gradient(farthest-side, transparent 60%, #000 70%, #000 100%);
+    animation: gold-scan-spin 3s linear infinite;
+  }
+
+  @keyframes gold-scan-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L14: FLOATING FOUNDER EMOJIS === */
+  .founder-float {
+    position: absolute;
+    pointer-events: none;
+    z-index: 14;
+    opacity: 0;
+  }
+
+  .ff1 { top: 15%; right: -3%; font-size: 18px; animation: ff-rise 5.5s ease-out infinite 0s; }
+  .ff2 { top: 50%; left: -5%;  font-size: 14px; animation: ff-rise 4.8s ease-out infinite 0.8s; }
+  .ff3 { top: 80%; right: -4%; font-size: 16px; animation: ff-rise 5.0s ease-out infinite 1.6s; }
+  .ff4 { top: 35%; left: -2%;  font-size: 20px; animation: ff-rise 6.0s ease-out infinite 0.4s; }
+  .ff5 { top: 65%; right: -6%; font-size: 15px; animation: ff-rise 4.5s ease-out infinite 1.2s; }
+
+  @keyframes ff-rise {
+    0%   { opacity: 0; transform: translateY(0) scale(0.4); }
+    10%  { opacity: 1; transform: translateY(-10px) scale(1); }
+    50%  { opacity: 0.7; transform: translateY(-60px) scale(0.9); }
+    80%  { opacity: 0.2; transform: translateY(-110px) scale(0.6); }
+    100% { opacity: 0; transform: translateY(-150px) scale(0.3); }
+  }
+
+  /* === L15: FLICKER === */
+  .gold-flicker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    z-index: 8;
+    pointer-events: none;
+    animation: g-flick 0.2s steps(3) infinite;
+  }
+
+  @keyframes g-flick {
+    0%   { box-shadow: 0 0 4px 1px rgba(255,200,80,0.1); }
+    33%  { box-shadow: 0 0 0 0 transparent; }
+    66%  { box-shadow: 0 0 3px 1px rgba(255,180,50,0.07); }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+
+  /* === L16: FOUNDER BADGE === */
+  .founder-badge {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    font: bold 10px/1.4 'Courier New', monospace;
+    color: rgba(255,210,100,0.7);
+    text-align: center;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(255,200,60,0.4);
+    animation: badge-glow 2s ease-in-out infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes badge-glow {
+    0%, 100% { text-shadow: 0 0 8px rgba(255,200,60,0.4); color: rgba(255,210,100,0.7); }
+    50%      { text-shadow: 0 0 16px rgba(255,210,80,0.6), 0 0 30px rgba(255,180,40,0.2); color: rgba(255,230,150,0.9); }
+  }
+
+  /* === L17: BOTTOM STATUS === */
+  .founder-status {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    font: 7px/1.4 'Courier New', monospace;
+    color: rgba(255,200,80,0.35);
+    text-align: center;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    animation: status-flicker 0.5s steps(1) infinite;
+  }
+
+  @keyframes status-flicker {
+    0%, 70% { opacity: 1; }
+    35%     { opacity: 0.5; }
+    85%     { opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+
+  <!-- FOUNDER BADGE -->
+  <div class="founder-badge">👑 FOUNDER 👑</div>
+
+  <!-- PHOTO -->
+  <div class="photo-slot"><span>Your<br>Photo<br>Here</span></div>
+
+  <!-- GILDED RING -->
+  <div class="gilded-ring"></div>
+
+  <!-- GOLD AURA -->
+  <div class="gold-aura"></div>
+  <div class="gold-aura-2"></div>
+
+  <!-- ORNAMENTAL RINGS -->
+  <div class="ornament-ring"></div>
+  <div class="ornament-ring-2"></div>
+
+  <!-- FILIGREE RINGS -->
+  <div class="filigree-ring">
+    <svg viewBox="0 0 224 224">
+      <circle class="fil-seg" cx="112" cy="112" r="108"/>
+      <circle class="fil-seg-bright" cx="112" cy="112" r="108"/>
+    </svg>
+  </div>
+  <div class="filigree-outer">
+    <svg viewBox="0 0 250 250">
+      <circle class="fil-outer-seg" cx="125" cy="125" r="121"/>
+    </svg>
+  </div>
+
+  <!-- GOLD SCANNER -->
+  <div class="gold-scan"></div>
+
+  <!-- RADIANT LIGHT RAYS -->
+  <div class="light-rays">
+    <svg viewBox="0 0 350 350">
+      <line class="ray rl1"  x1="175" y1="175" x2="175" y2="5"/>
+      <line class="ray rl2"  x1="175" y1="175" x2="290" y2="30"/>
+      <line class="ray rl3"  x1="175" y1="175" x2="345" y2="100"/>
+      <line class="ray rl4"  x1="175" y1="175" x2="345" y2="175"/>
+      <line class="ray rl5"  x1="175" y1="175" x2="345" y2="250"/>
+      <line class="ray rl6"  x1="175" y1="175" x2="290" y2="320"/>
+      <line class="ray rl7"  x1="175" y1="175" x2="175" y2="345"/>
+      <line class="ray rl8"  x1="175" y1="175" x2="60"  y2="320"/>
+      <line class="ray rl9"  x1="175" y1="175" x2="5"   y2="250"/>
+      <line class="ray rl10" x1="175" y1="175" x2="5"   y2="175"/>
+      <line class="ray rl11" x1="175" y1="175" x2="5"   y2="100"/>
+      <line class="ray rl12" x1="175" y1="175" x2="60"  y2="30"/>
+    </svg>
+  </div>
+
+  <!-- ORBITING GEMS -->
+  <div class="crown-orbit crown-orbit-1">
+    <div class="gem-container gc1">
+      <div class="gem gem-diamond">
+        <div class="gem-top"></div>
+        <div class="gem-bottom"></div>
+        <div class="gem-shine"></div>
+      </div>
+    </div>
+    <div class="gem-container gc2">
+      <div class="gem gem-diamond">
+        <div class="gem-top"></div>
+        <div class="gem-bottom"></div>
+        <div class="gem-shine"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="crown-orbit crown-orbit-2">
+    <div class="gem-container gc3">
+      <div class="gem gem-star">
+        <div class="gem-core"></div>
+      </div>
+    </div>
+    <div class="gem-container gc4">
+      <div class="gem gem-star">
+        <div class="gem-core"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="crown-orbit crown-orbit-3">
+    <div class="gem-container gc5">
+      <div class="gem gem-shield">
+        <div class="gem-body"></div>
+        <div class="gem-inner"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORBITING LAUREL ELEMENTS -->
+  <div class="laurel-orbit">
+    <div class="laurel-leaf leaf-1"></div>
+    <div class="laurel-leaf leaf-2"></div>
+    <div class="laurel-leaf leaf-3"></div>
+  </div>
+
+  <!-- FLOATING GOLD PARTICLES -->
+  <div class="gold-particle gp1"><div class="gp-shard"></div></div>
+  <div class="gold-particle gp2"><div class="gp-shard"></div></div>
+  <div class="gold-particle gp3"><div class="gp-shard"></div></div>
+  <div class="gold-particle gp4"><div class="gp-shard"></div></div>
+  <div class="gold-particle gp5"><div class="gp-shard"></div></div>
+  <div class="gold-particle gp6"><div class="gp-shard"></div></div>
+
+  <!-- SPARKLE TRAILS -->
+  <div class="sparkle-layer">
+    <div class="sparkle sparkle-1"></div>
+    <div class="sparkle sparkle-2"></div>
+    <div class="sparkle sparkle-3"></div>
+  </div>
+
+  <!-- FLOATING FOUNDER ITEMS -->
+  <div class="founder-float ff1">👑</div>
+  <div class="founder-float ff2">⭐</div>
+  <div class="founder-float ff3">💎</div>
+  <div class="founder-float ff4">🏆</div>
+  <div class="founder-float ff5">✨</div>
+
+  <!-- INSCRIPTION RING -->
+  <div class="inscription-ring">
+    <svg viewBox="0 0 330 330">
+      <defs><path id="insc-path" d="M165,12 a153,153 0 1,1 0,306 a153,153 0 1,1 0,-306"/></defs>
+      <text fill="rgba(255,200,80,0.5)" font-size="7" font-family="'Courier New', monospace" letter-spacing="2">
+        <textPath href="#insc-path">
+          ◆ EST. FOUNDING MEMBER ◆ VISIONARY ◆ PIONEER ◆ ARCHITECT ◆ TRAILBLAZER ◆ ORIGINAL ◆ GENESIS ◆
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <!-- GOLDEN GLOW -->
+  <div class="golden-glow"></div>
+
+  <!-- FLICKER -->
+  <div class="gold-flicker"></div>
+
+  <!-- FOUNDER STATUS -->
+  <div class="founder-status">
+    ◆ FOUNDING MEMBER ◆ GENESIS TIER ◆<br>
+    EST. MMXXV ◆ VERIFIED ◆ ORIGINAL
+  </div>
+
+</div>
+
+</body>
+</html>

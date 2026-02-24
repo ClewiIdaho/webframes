@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>⚡ BETA</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #08001a;
+    overflow: hidden;
+  }
+
+  /* === RETROWAVE GRID FLOOR === */
+  body::before {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: -20%;
+    width: 140%;
+    height: 55%;
+    background:
+      linear-gradient(90deg,
+        rgba(180,0,255,0.15) 1px, transparent 1px),
+      linear-gradient(0deg,
+        rgba(180,0,255,0.12) 1px, transparent 1px);
+    background-size: 60px 40px;
+    transform: perspective(400px) rotateX(55deg);
+    transform-origin: bottom center;
+    animation: grid-scroll 2s linear infinite;
+    pointer-events: none;
+    -webkit-mask: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 80%);
+    mask: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 80%);
+  }
+
+  @keyframes grid-scroll {
+    to { background-position: 0 40px; }
+  }
+
+  /* === NEON STAR DUST === */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(1px 1px at 6% 14%, rgba(200,100,255,0.5), transparent),
+      radial-gradient(1px 1px at 16% 46%, rgba(255,80,200,0.3), transparent),
+      radial-gradient(1px 1px at 26% 76%, rgba(180,60,255,0.4), transparent),
+      radial-gradient(1px 1px at 38% 24%, rgba(255,100,220,0.25), transparent),
+      radial-gradient(1px 1px at 48% 56%, rgba(160,40,255,0.35), transparent),
+      radial-gradient(1px 1px at 58% 36%, rgba(255,60,180,0.4), transparent),
+      radial-gradient(1px 1px at 68% 70%, rgba(200,80,255,0.25), transparent),
+      radial-gradient(1px 1px at 78% 16%, rgba(255,100,240,0.5), transparent),
+      radial-gradient(1px 1px at 88% 54%, rgba(180,50,255,0.3), transparent),
+      radial-gradient(1px 1px at 96% 86%, rgba(255,80,200,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 12% 66%, rgba(200,60,255,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 34% 34%, rgba(255,100,240,0.3), transparent),
+      radial-gradient(1.5px 1.5px at 54% 90%, rgba(180,40,255,0.25), transparent),
+      radial-gradient(1.5px 1.5px at 74% 50%, rgba(255,80,220,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 94% 26%, rgba(200,70,255,0.35), transparent);
+    animation: neon-twinkle 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes neon-twinkle {
+    0%   { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+
+  .stage {
+    position: relative;
+    width: 400px;
+    height: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* === PHOTO SLOT === */
+  .photo-slot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #0a0018;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .photo-slot span {
+    color: rgba(200,100,255,0.12);
+    font: bold 11px/1.3 sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* === L1: INNER NEON RING === */
+  .neon-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 198px;
+    height: 198px;
+    border-radius: 50%;
+    z-index: 9;
+    pointer-events: none;
+    animation: neon-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes neon-pulse {
+    0%, 100% {
+      box-shadow:
+        inset 0 0 0 2px rgba(200,60,255,0.5),
+        inset 0 0 10px rgba(180,40,255,0.25),
+        0 0 0 2px rgba(200,60,255,0.4),
+        0 0 12px rgba(180,40,255,0.2),
+        0 0 30px rgba(160,20,255,0.1);
+    }
+    50% {
+      box-shadow:
+        inset 0 0 0 2.5px rgba(240,100,255,0.8),
+        inset 0 0 16px rgba(220,80,255,0.4),
+        0 0 0 3px rgba(240,100,255,0.6),
+        0 0 20px rgba(220,80,255,0.35),
+        0 0 50px rgba(200,60,255,0.15);
+    }
+  }
+
+  /* === SECOND NEON RING (hot pink) === */
+  .neon-ring-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 194px;
+    height: 194px;
+    border-radius: 50%;
+    z-index: 9;
+    pointer-events: none;
+    animation: neon-pulse-2 2s ease-in-out infinite 0.5s;
+  }
+
+  @keyframes neon-pulse-2 {
+    0%, 100% {
+      box-shadow:
+        inset 0 0 0 1px rgba(255,50,150,0.3),
+        0 0 8px rgba(255,50,150,0.15);
+    }
+    50% {
+      box-shadow:
+        inset 0 0 0 1.5px rgba(255,80,180,0.6),
+        0 0 16px rgba(255,80,180,0.25);
+    }
+  }
+
+  /* === L2: SYNTHWAVE PLASMA === */
+  .plasma {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    background: conic-gradient(
+      from 0deg,
+      rgba(80,0,160,0) 0deg,
+      rgba(180,40,255,0.45) 25deg,
+      rgba(60,0,120,0) 50deg,
+      rgba(255,50,150,0.35) 80deg,
+      rgba(40,0,80,0) 110deg,
+      rgba(160,30,255,0.4) 140deg,
+      rgba(30,0,60,0) 170deg,
+      rgba(255,80,200,0.35) 200deg,
+      rgba(50,0,100,0) 230deg,
+      rgba(200,60,255,0.3) 260deg,
+      rgba(40,0,80,0) 290deg,
+      rgba(255,60,160,0.4) 320deg,
+      rgba(80,0,160,0) 360deg
+    );
+    filter: blur(25px);
+    animation: plasma-swirl 12s linear infinite, plasma-breathe 5s ease-in-out infinite;
+  }
+
+  @keyframes plasma-swirl { to { transform: translate(-50%,-50%) rotate(360deg); } }
+  @keyframes plasma-breathe {
+    0%, 100% { opacity: 0.5; }
+    50%      { opacity: 0.9; }
+  }
+
+  .plasma-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    background: conic-gradient(
+      from 90deg,
+      rgba(60,0,120,0) 0deg,
+      rgba(255,50,180,0.35) 40deg,
+      rgba(40,0,80,0) 80deg,
+      rgba(180,40,255,0.3) 130deg,
+      rgba(30,0,60,0) 180deg,
+      rgba(255,80,200,0.4) 230deg,
+      rgba(50,0,100,0) 280deg,
+      rgba(200,50,255,0.3) 330deg,
+      rgba(60,0,120,0) 360deg
+    );
+    filter: blur(20px);
+    animation: plasma-swirl-2 18s linear infinite reverse;
+    opacity: 0.6;
+  }
+
+  @keyframes plasma-swirl-2 { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L3: RETRO RING SYSTEM === */
+  .retro-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(65deg);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    z-index: 6;
+    pointer-events: none;
+    border: 2px solid rgba(200,80,255,0.2);
+    box-shadow:
+      0 0 0 4px rgba(180,60,255,0.06),
+      0 0 0 8px rgba(255,50,180,0.04),
+      0 0 8px rgba(200,80,255,0.1);
+    animation: retro-rotate 10s linear infinite;
+  }
+
+  @keyframes retro-rotate { to { transform: translate(-50%,-50%) rotateX(65deg) rotate(360deg); } }
+
+  .retro-ring-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(65deg);
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    z-index: 5;
+    pointer-events: none;
+    border: 1px solid rgba(255,60,180,0.12);
+    box-shadow: 0 0 0 3px rgba(255,50,150,0.04);
+    animation: retro-rotate-2 14s linear infinite reverse;
+  }
+
+  @keyframes retro-rotate-2 { to { transform: translate(-50%,-50%) rotateX(65deg) rotate(360deg); } }
+
+  /* === L4: CYBER HUD RING === */
+  .cyber-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 224px;
+    height: 224px;
+    z-index: 7;
+    pointer-events: none;
+    animation: cyber-spin 8s linear infinite;
+  }
+  .cyber-ring svg { width: 100%; height: 100%; overflow: visible; }
+
+  @keyframes cyber-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .cyber-seg {
+    fill: none;
+    stroke: rgba(200,80,255,0.45);
+    stroke-width: 2;
+    stroke-linecap: butt;
+    stroke-dasharray: 15 8 6 12;
+  }
+
+  .cyber-seg-hot {
+    fill: none;
+    stroke: rgba(255,80,200,0.7);
+    stroke-width: 1.5;
+    stroke-linecap: butt;
+    stroke-dasharray: 4 30;
+    animation: cyber-blink 1.2s steps(1) infinite;
+  }
+
+  @keyframes cyber-blink {
+    0%, 60%  { stroke: rgba(255,80,200,0.7); }
+    30%      { stroke: rgba(255,200,255,0.95); }
+  }
+
+  /* === L5: OUTER CYBER RING === */
+  .cyber-outer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    z-index: 6;
+    pointer-events: none;
+    animation: cyber-outer-spin 12s linear infinite reverse;
+  }
+  .cyber-outer svg { width: 100%; height: 100%; overflow: visible; }
+
+  @keyframes cyber-outer-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .cyber-outer-seg {
+    fill: none;
+    stroke: rgba(180,50,255,0.25);
+    stroke-width: 1.5;
+    stroke-dasharray: 20 10 5 15;
+  }
+
+  /* === L6: ORBITING GLITCH SHAPES === */
+  .glitch-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 340px;
+    height: 340px;
+    z-index: 13;
+    pointer-events: none;
+  }
+
+  .glitch-orbit-1 { animation: glitch-spin 10s linear infinite; }
+  .glitch-orbit-2 { animation: glitch-spin 14s linear infinite reverse; }
+  .glitch-orbit-3 { animation: glitch-spin 8s linear infinite; }
+
+  @keyframes glitch-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .shape-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+
+  .shc1 { margin: -12px 0 0 -12px; transform: rotate(0deg)   translateX(170px); }
+  .shc2 { margin: -12px 0 0 -12px; transform: rotate(180deg) translateX(170px); }
+  .shc3 { margin: -12px 0 0 -12px; transform: rotate(60deg)  translateX(155px); }
+  .shc4 { margin: -12px 0 0 -12px; transform: rotate(240deg) translateX(155px); }
+  .shc5 { margin: -12px 0 0 -12px; transform: rotate(30deg)  translateX(185px); }
+
+  /* RETRO SHAPES */
+  .retro-shape {
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+
+  /* Neon triangle */
+  .shape-tri .tri-body {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 18px solid rgba(200,80,255,0.6);
+    top: 2px;
+    left: 2px;
+    filter: drop-shadow(0 0 4px rgba(200,80,255,0.5));
+    animation: shape-glow 2s ease-in-out infinite;
+  }
+  .shape-tri .tri-inner {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 11px solid rgba(10,0,20,0.8);
+    top: 6px;
+    left: 6px;
+  }
+
+  @keyframes shape-glow {
+    0%, 100% { filter: drop-shadow(0 0 4px rgba(200,80,255,0.5)); }
+    50%      { filter: drop-shadow(0 0 8px rgba(255,100,255,0.7)); }
+  }
+
+  /* Neon diamond */
+  .shape-dia .dia-body {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: transparent;
+    border: 2px solid rgba(255,60,180,0.6);
+    transform: rotate(45deg);
+    top: 4px;
+    left: 4px;
+    box-shadow: 0 0 6px rgba(255,60,180,0.4), inset 0 0 6px rgba(255,60,180,0.15);
+    animation: dia-glow 2.5s ease-in-out infinite;
+  }
+
+  @keyframes dia-glow {
+    0%, 100% { box-shadow: 0 0 6px rgba(255,60,180,0.4), inset 0 0 6px rgba(255,60,180,0.15); }
+    50%      { box-shadow: 0 0 12px rgba(255,100,220,0.6), inset 0 0 10px rgba(255,80,200,0.3); }
+  }
+
+  /* Neon circle */
+  .shape-circ .circ-body {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: transparent;
+    border: 2px solid rgba(120,200,255,0.6);
+    border-radius: 50%;
+    top: 4px;
+    left: 4px;
+    box-shadow: 0 0 6px rgba(120,200,255,0.4), inset 0 0 4px rgba(120,200,255,0.15);
+    animation: circ-glow 1.8s ease-in-out infinite;
+  }
+  .shape-circ .circ-dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(120,200,255,0.8);
+    border-radius: 50%;
+    top: 10px;
+    left: 10px;
+    box-shadow: 0 0 4px rgba(120,200,255,0.6);
+  }
+
+  @keyframes circ-glow {
+    0%, 100% { box-shadow: 0 0 6px rgba(120,200,255,0.4), inset 0 0 4px rgba(120,200,255,0.15); }
+    50%      { box-shadow: 0 0 10px rgba(150,220,255,0.6), inset 0 0 8px rgba(120,200,255,0.3); }
+  }
+
+  /* === L7: NEON LIGHT RAYS === */
+  .neon-rays {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .neon-rays svg { width: 100%; height: 100%; overflow: visible; }
+
+  .nray {
+    fill: none;
+    stroke-linecap: round;
+    stroke-width: 1;
+  }
+  .nr1  { stroke: rgba(200,80,255,0.45); stroke-dasharray: 20 60; animation: nray-dash 1.5s linear infinite 0s; }
+  .nr2  { stroke: rgba(255,60,180,0.35); stroke-dasharray: 15 70; animation: nray-dash 2.0s linear infinite 0.2s; }
+  .nr3  { stroke: rgba(180,50,255,0.5);  stroke-dasharray: 25 50; animation: nray-dash 1.2s linear infinite 0.4s; }
+  .nr4  { stroke: rgba(255,80,200,0.28); stroke-dasharray: 12 75; animation: nray-dash 2.5s linear infinite 0.6s; }
+  .nr5  { stroke: rgba(220,100,255,0.4); stroke-dasharray: 18 65; animation: nray-dash 1.8s linear infinite 0.8s; }
+  .nr6  { stroke: rgba(255,50,160,0.35); stroke-dasharray: 22 55; animation: nray-dash 1.4s linear infinite 1.0s; }
+  .nr7  { stroke: rgba(200,70,255,0.45); stroke-dasharray: 14 68; animation: nray-dash 2.2s linear infinite 0.3s; }
+  .nr8  { stroke: rgba(255,80,200,0.28); stroke-dasharray: 28 45; animation: nray-dash 1.6s linear infinite 0.5s; }
+  .nr9  { stroke: rgba(180,40,255,0.5);  stroke-dasharray: 10 80; animation: nray-dash 2.8s linear infinite 0.7s; }
+  .nr10 { stroke: rgba(255,60,180,0.35); stroke-dasharray: 16 62; animation: nray-dash 1.3s linear infinite 0.9s; }
+  .nr11 { stroke: rgba(220,90,255,0.32); stroke-dasharray: 20 58; animation: nray-dash 1.9s linear infinite 0.1s; }
+  .nr12 { stroke: rgba(200,60,255,0.48); stroke-dasharray: 24 52; animation: nray-dash 1.1s linear infinite 1.1s; }
+
+  @keyframes nray-dash { to { stroke-dashoffset: -100; } }
+
+  /* === L8: ORBITING NEON ORBS === */
+  .orb-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 310px;
+    height: 310px;
+    z-index: 11;
+    pointer-events: none;
+    animation: orb-spin 20s linear infinite;
+  }
+
+  @keyframes orb-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .neon-orb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+  }
+
+  .orb-1 {
+    margin: -8px 0 0 -8px;
+    transform: rotate(0deg) translateX(155px);
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle at 35% 35%, #ff66cc, #cc00aa, #660066);
+    box-shadow: 0 0 8px rgba(255,80,200,0.5), 0 0 20px rgba(255,50,180,0.2);
+  }
+  .orb-2 {
+    margin: -6px 0 0 -6px;
+    transform: rotate(120deg) translateX(155px);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 35% 35%, #aa66ff, #7700cc, #330066);
+    box-shadow: 0 0 6px rgba(180,80,255,0.5), 0 0 16px rgba(150,40,255,0.2);
+  }
+  .orb-3 {
+    margin: -5px 0 0 -5px;
+    transform: rotate(220deg) translateX(155px);
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle at 35% 35%, #66ddff, #0088cc, #004466);
+    box-shadow: 0 0 5px rgba(100,200,255,0.5), 0 0 14px rgba(80,180,255,0.2);
+  }
+
+  .orb-1::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotateX(70deg);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,80,200,0.3);
+  }
+
+  /* === L9: FLOATING GLITCH PIXELS === */
+  .glitch-px {
+    position: absolute;
+    pointer-events: none;
+    z-index: 12;
+    opacity: 0;
+  }
+
+  .gpx1 { top: 18%; left: -2%;  animation: gpx-float 5.0s ease-out infinite 0s; }
+  .gpx2 { top: 42%; right: -4%; animation: gpx-float 5.5s ease-out infinite 0.8s; }
+  .gpx3 { top: 72%; left: -5%;  animation: gpx-float 4.5s ease-out infinite 1.6s; }
+  .gpx4 { top: 30%; left: -3%;  animation: gpx-float 6.0s ease-out infinite 0.4s; }
+  .gpx5 { top: 58%; right: -3%; animation: gpx-float 4.8s ease-out infinite 1.2s; }
+  .gpx6 { top: 82%; right: -5%; animation: gpx-float 5.2s ease-out infinite 2.0s; }
+
+  .px-block {
+    display: flex;
+    gap: 1px;
+  }
+  .px-block div {
+    width: 4px;
+    height: 4px;
+  }
+  .px-block .px-a { background: rgba(200,80,255,0.8); box-shadow: 0 0 3px rgba(200,80,255,0.5); }
+  .px-block .px-b { background: rgba(255,60,180,0.7); box-shadow: 0 0 3px rgba(255,60,180,0.4); }
+  .px-block .px-c { background: rgba(120,200,255,0.6); box-shadow: 0 0 3px rgba(120,200,255,0.4); }
+
+  .gpx2 .px-block div, .gpx5 .px-block div { width: 3px; height: 3px; }
+  .gpx4 .px-block div, .gpx6 .px-block div { width: 5px; height: 5px; }
+
+  @keyframes gpx-float {
+    0%   { opacity: 0; transform: translateY(0) translateX(0) rotate(0deg); }
+    10%  { opacity: 0.9; transform: translateY(-8px) translateX(5px) rotate(20deg); }
+    40%  { opacity: 0.7; transform: translateY(-40px) translateX(-10px) rotate(80deg); }
+    70%  { opacity: 0.3; transform: translateY(-80px) translateX(8px) rotate(160deg); }
+    100% { opacity: 0; transform: translateY(-130px) translateX(-5px) rotate(240deg); }
+  }
+
+  /* === L10: LASER TRAILS === */
+  .laser-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360px;
+    height: 360px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .laser {
+    position: absolute;
+    width: 6px;
+    height: 3px;
+    border-radius: 3px;
+  }
+
+  .laser-1 {
+    background: #c850ff;
+    box-shadow: 0 0 6px rgba(200,80,255,0.6), 0 0 12px rgba(200,80,255,0.3);
+    top: 22%;
+    left: -10%;
+    animation: laser-fly 3.5s linear infinite 0s;
+  }
+  .laser-2 {
+    background: #ff50b4;
+    box-shadow: 0 0 6px rgba(255,80,180,0.6), 0 0 12px rgba(255,80,180,0.3);
+    top: 55%;
+    left: -10%;
+    animation: laser-fly 4.5s linear infinite 1.8s;
+  }
+  .laser-3 {
+    background: #78c8ff;
+    box-shadow: 0 0 6px rgba(120,200,255,0.6), 0 0 12px rgba(120,200,255,0.3);
+    top: 38%;
+    left: -10%;
+    animation: laser-fly 3s linear infinite 3.2s;
+  }
+
+  .laser::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 6px;
+    width: 30px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, currentColor, transparent);
+    opacity: 0.4;
+  }
+  .laser-1::after { color: #c850ff; }
+  .laser-2::after { color: #ff50b4; }
+  .laser-3::after { color: #78c8ff; }
+
+  @keyframes laser-fly {
+    0%   { transform: translateX(0) translateY(0); opacity: 0; }
+    5%   { opacity: 1; }
+    80%  { opacity: 0.7; }
+    100% { transform: translateX(420px) translateY(-20px); opacity: 0; }
+  }
+
+  /* === L11: NEON GLOW === */
+  .neon-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+    animation: neon-glow-pulse 3.5s ease-in-out infinite;
+  }
+
+  @keyframes neon-glow-pulse {
+    0%, 100% {
+      box-shadow:
+        0 0 20px 5px rgba(180,40,255,0.18),
+        0 0 40px 10px rgba(140,20,200,0.1),
+        0 0 80px 20px rgba(100,0,160,0.05);
+    }
+    50% {
+      box-shadow:
+        0 0 30px 8px rgba(220,80,255,0.3),
+        0 0 55px 16px rgba(180,50,220,0.18),
+        0 0 100px 28px rgba(140,20,180,0.09);
+    }
+  }
+
+  /* === L12: DATA RING === */
+  .data-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 330px;
+    height: 330px;
+    z-index: 4;
+    pointer-events: none;
+    animation: data-spin 50s linear infinite;
+    opacity: 0.25;
+  }
+  .data-ring svg { width: 100%; height: 100%; }
+
+  @keyframes data-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L13: SCANLINE BEAM === */
+  .scan-beam {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    z-index: 7;
+    pointer-events: none;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 350deg,
+      rgba(200,80,255,0) 352deg,
+      rgba(200,80,255,0.2) 356deg,
+      rgba(200,80,255,0.05) 360deg
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent 60%, #000 70%, #000 100%);
+    mask: radial-gradient(farthest-side, transparent 60%, #000 70%, #000 100%);
+    animation: scan-spin 3s linear infinite;
+  }
+
+  @keyframes scan-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  /* === L14: FLOATING RETRO EMOJIS === */
+  .retro-float {
+    position: absolute;
+    pointer-events: none;
+    z-index: 14;
+    opacity: 0;
+  }
+
+  .rf1 { top: 15%; right: -3%; font-size: 18px; animation: rf-rise 5.5s ease-out infinite 0s; }
+  .rf2 { top: 50%; left: -5%;  font-size: 14px; animation: rf-rise 4.8s ease-out infinite 0.8s; }
+  .rf3 { top: 80%; right: -4%; font-size: 16px; animation: rf-rise 5.0s ease-out infinite 1.6s; }
+  .rf4 { top: 35%; left: -2%;  font-size: 20px; animation: rf-rise 6.0s ease-out infinite 0.4s; }
+  .rf5 { top: 65%; right: -6%; font-size: 15px; animation: rf-rise 4.5s ease-out infinite 1.2s; }
+
+  @keyframes rf-rise {
+    0%   { opacity: 0; transform: translateY(0) scale(0.4); }
+    10%  { opacity: 1; transform: translateY(-10px) scale(1); }
+    50%  { opacity: 0.7; transform: translateY(-60px) scale(0.9); }
+    80%  { opacity: 0.2; transform: translateY(-110px) scale(0.6); }
+    100% { opacity: 0; transform: translateY(-150px) scale(0.3); }
+  }
+
+  /* === L15: CRT FLICKER === */
+  .crt-flicker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    z-index: 8;
+    pointer-events: none;
+    animation: crt-flick 0.15s steps(3) infinite;
+  }
+
+  @keyframes crt-flick {
+    0%   { box-shadow: 0 0 5px 1px rgba(200,80,255,0.1); }
+    33%  { box-shadow: 0 0 0 0 transparent; }
+    66%  { box-shadow: 0 0 4px 1px rgba(255,60,180,0.08); }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+
+  /* === SCANLINES OVERLAY === */
+  .scanlines {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    z-index: 10;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    opacity: 0.5;
+  }
+
+  /* === L16: BETA BADGE === */
+  .beta-badge {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .beta-text {
+    font: 900 14px/1 'Courier New', monospace;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: rgba(200,80,255,0.9);
+    text-shadow:
+      0 0 7px rgba(200,80,255,0.6),
+      0 0 20px rgba(180,40,255,0.3),
+      0 0 40px rgba(160,20,255,0.15);
+    animation: beta-flicker 3s ease-in-out infinite;
+    position: relative;
+    padding: 0 4px;
+  }
+
+  .beta-text::before,
+  .beta-text::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,60,180,0.5), transparent);
+  }
+  .beta-text::before { right: 100%; margin-right: 6px; }
+  .beta-text::after  { left: 100%;  margin-left: 6px; }
+
+  .beta-sub {
+    font: 7px/1 'Courier New', monospace;
+    letter-spacing: 3px;
+    color: rgba(255,60,180,0.5);
+    margin-top: 5px;
+    text-shadow: 0 0 4px rgba(255,60,180,0.3);
+  }
+
+  @keyframes beta-flicker {
+    0%, 100% {
+      text-shadow:
+        0 0 7px rgba(200,80,255,0.6),
+        0 0 20px rgba(180,40,255,0.3),
+        0 0 40px rgba(160,20,255,0.15);
+      color: rgba(200,80,255,0.9);
+    }
+    8% {
+      text-shadow: 0 0 2px rgba(200,80,255,0.2);
+      color: rgba(200,80,255,0.4);
+    }
+    10% {
+      text-shadow:
+        0 0 10px rgba(240,120,255,0.8),
+        0 0 30px rgba(220,80,255,0.5),
+        0 0 50px rgba(200,60,255,0.2);
+      color: rgba(240,140,255,1);
+    }
+    50% {
+      text-shadow:
+        0 0 10px rgba(255,100,220,0.7),
+        0 0 25px rgba(255,60,180,0.4),
+        0 0 45px rgba(200,40,255,0.2);
+      color: rgba(255,140,240,1);
+    }
+    52% {
+      text-shadow: 0 0 2px rgba(255,60,180,0.15);
+      color: rgba(200,80,255,0.5);
+    }
+    54% {
+      text-shadow:
+        0 0 7px rgba(200,80,255,0.6),
+        0 0 20px rgba(180,40,255,0.3),
+        0 0 40px rgba(160,20,255,0.15);
+      color: rgba(200,80,255,0.9);
+    }
+  }
+
+  /* === L17: BOTTOM STATUS === */
+  .retro-status {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    font: 7px/1.4 'Courier New', monospace;
+    color: rgba(200,80,255,0.35);
+    text-align: center;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    animation: retro-status-flk 0.5s steps(1) infinite;
+  }
+
+  @keyframes retro-status-flk {
+    0%, 70% { opacity: 1; }
+    35%     { opacity: 0.5; }
+    85%     { opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+
+  <!-- BETA BADGE -->
+  <div class="beta-badge">
+    <div class="beta-text">⚡ BETA ⚡</div>
+    <div class="beta-sub">EARLY ACCESS</div>
+  </div>
+
+  <!-- PHOTO -->
+  <div class="photo-slot"><span>Your<br>Photo<br>Here</span></div>
+  <div class="scanlines"></div>
+
+  <!-- NEON RINGS -->
+  <div class="neon-ring"></div>
+  <div class="neon-ring-2"></div>
+
+  <!-- PLASMA -->
+  <div class="plasma"></div>
+  <div class="plasma-2"></div>
+
+  <!-- RETRO RINGS -->
+  <div class="retro-ring"></div>
+  <div class="retro-ring-2"></div>
+
+  <!-- CYBER HUD RINGS -->
+  <div class="cyber-ring">
+    <svg viewBox="0 0 224 224">
+      <circle class="cyber-seg" cx="112" cy="112" r="108"/>
+      <circle class="cyber-seg-hot" cx="112" cy="112" r="108"/>
+    </svg>
+  </div>
+  <div class="cyber-outer">
+    <svg viewBox="0 0 250 250">
+      <circle class="cyber-outer-seg" cx="125" cy="125" r="121"/>
+    </svg>
+  </div>
+
+  <!-- SCANLINE BEAM -->
+  <div class="scan-beam"></div>
+
+  <!-- NEON LIGHT RAYS -->
+  <div class="neon-rays">
+    <svg viewBox="0 0 350 350">
+      <line class="nray nr1"  x1="175" y1="175" x2="175" y2="5"/>
+      <line class="nray nr2"  x1="175" y1="175" x2="290" y2="30"/>
+      <line class="nray nr3"  x1="175" y1="175" x2="345" y2="100"/>
+      <line class="nray nr4"  x1="175" y1="175" x2="345" y2="175"/>
+      <line class="nray nr5"  x1="175" y1="175" x2="345" y2="250"/>
+      <line class="nray nr6"  x1="175" y1="175" x2="290" y2="320"/>
+      <line class="nray nr7"  x1="175" y1="175" x2="175" y2="345"/>
+      <line class="nray nr8"  x1="175" y1="175" x2="60"  y2="320"/>
+      <line class="nray nr9"  x1="175" y1="175" x2="5"   y2="250"/>
+      <line class="nray nr10" x1="175" y1="175" x2="5"   y2="175"/>
+      <line class="nray nr11" x1="175" y1="175" x2="5"   y2="100"/>
+      <line class="nray nr12" x1="175" y1="175" x2="60"  y2="30"/>
+    </svg>
+  </div>
+
+  <!-- ORBITING GLITCH SHAPES -->
+  <div class="glitch-orbit glitch-orbit-1">
+    <div class="shape-container shc1">
+      <div class="retro-shape shape-tri">
+        <div class="tri-body"></div>
+        <div class="tri-inner"></div>
+      </div>
+    </div>
+    <div class="shape-container shc2">
+      <div class="retro-shape shape-tri">
+        <div class="tri-body"></div>
+        <div class="tri-inner"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="glitch-orbit glitch-orbit-2">
+    <div class="shape-container shc3">
+      <div class="retro-shape shape-dia">
+        <div class="dia-body"></div>
+      </div>
+    </div>
+    <div class="shape-container shc4">
+      <div class="retro-shape shape-dia">
+        <div class="dia-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="glitch-orbit glitch-orbit-3">
+    <div class="shape-container shc5">
+      <div class="retro-shape shape-circ">
+        <div class="circ-body"></div>
+        <div class="circ-dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORBITING NEON ORBS -->
+  <div class="orb-orbit">
+    <div class="neon-orb orb-1"></div>
+    <div class="neon-orb orb-2"></div>
+    <div class="neon-orb orb-3"></div>
+  </div>
+
+  <!-- FLOATING GLITCH PIXELS -->
+  <div class="glitch-px gpx1"><div class="px-block"><div class="px-a"></div><div class="px-b"></div><div class="px-c"></div></div></div>
+  <div class="glitch-px gpx2"><div class="px-block"><div class="px-b"></div><div class="px-a"></div></div></div>
+  <div class="glitch-px gpx3"><div class="px-block"><div class="px-c"></div><div class="px-a"></div><div class="px-b"></div></div></div>
+  <div class="glitch-px gpx4"><div class="px-block"><div class="px-a"></div><div class="px-c"></div></div></div>
+  <div class="glitch-px gpx5"><div class="px-block"><div class="px-b"></div><div class="px-c"></div><div class="px-a"></div></div></div>
+  <div class="glitch-px gpx6"><div class="px-block"><div class="px-a"></div><div class="px-b"></div></div></div>
+
+  <!-- LASER TRAILS -->
+  <div class="laser-layer">
+    <div class="laser laser-1"></div>
+    <div class="laser laser-2"></div>
+    <div class="laser laser-3"></div>
+  </div>
+
+  <!-- FLOATING RETRO EMOJIS -->
+  <div class="retro-float rf1">⚡</div>
+  <div class="retro-float rf2">💜</div>
+  <div class="retro-float rf3">🔮</div>
+  <div class="retro-float rf4">🎮</div>
+  <div class="retro-float rf5">💫</div>
+
+  <!-- DATA RING -->
+  <div class="data-ring">
+    <svg viewBox="0 0 330 330">
+      <defs><path id="data-path" d="M165,12 a153,153 0 1,1 0,306 a153,153 0 1,1 0,-306"/></defs>
+      <text fill="rgba(200,80,255,0.5)" font-size="7" font-family="'Courier New', monospace" letter-spacing="2">
+        <textPath href="#data-path">
+          ▸ BETA ACCESS ▸ BUILD 0.9.7 ▸ EARLY ADOPTER ▸ TESTING PHASE ▸ PRE-RELEASE ▸ NEON PROTOCOL ▸
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <!-- NEON GLOW -->
+  <div class="neon-glow"></div>
+
+  <!-- CRT FLICKER -->
+  <div class="crt-flicker"></div>
+
+  <!-- RETRO STATUS -->
+  <div class="retro-status">
+    ▸ BETA TESTER ▸ BUILD 0.9.7 ▸<br>
+    EARLY ACCESS ◆ PRE-RELEASE ◆ VERIFIED
+  </div>
+
+</div>
+
+</body>
+</html>
